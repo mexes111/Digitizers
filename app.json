@@ -1,0 +1,23 @@
+{
+  "expo": {
+    "name": "Digitizers",
+    "slug": "digitizers-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "permissions": []
+    },
+    "web": {}
+  }
+}

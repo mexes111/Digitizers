@@ -6,8 +6,15 @@ import WelcomeCarousel from '../screens/Onboarding/WelcomeCarousel';
 import UserTypeSelection from '../screens/Onboarding/UserTypeSelection';
 import RegistrationOptions from '../screens/Onboarding/RegistrationOptions';
 import EmailSignupForm from '../screens/Onboarding/EmailSignupForm';
-import CategorySelect from '../screens/Onboarding/CreativeSetup/CategorySelect';
-import BasicInfoForm from '../screens/Onboarding/CreativeSetup/BasicInfoForm';
+import ProfileSetup from '../screens/Onboarding/ProfileSetup';
+import UploadWork from '../screens/Onboarding/UploadWork';
+import { EnterPhoneScreen } from '../screens/Auth/EnterPhoneScreen';
+import { VerifyOTPScreen } from '../screens/Auth/VerifyOTPScreen';
+import CreativeCategorySelection from '../screens/Onboarding/CreativeCategorySelection';
+import BuildPortfolio from '../screens/Onboarding/BuildPortfolio';
+import StyleSelection from '../screens/Onboarding/StyleSelection';
+import UploadPhoto from '../screens/Onboarding/UploadPhoto';
+import TellYourStory from '../screens/Onboarding/TellYourStory';
 
 export type RootStackParamList = {
   SplashScreen: undefined;
@@ -15,8 +22,17 @@ export type RootStackParamList = {
   UserTypeSelection: undefined;
   RegistrationOptions: undefined;
   EmailSignupForm: undefined;
-  CategorySelect: undefined;
-  BasicInfoForm: undefined;
+  ProfileSetup: undefined;
+  UploadWork: undefined;
+  EnterPhone: undefined;
+  VerifyOTP: undefined;
+  SignIn: undefined;
+  MainApp: undefined;
+  CreativeCategorySelection: undefined;
+  BuildPortfolio: undefined;
+  StyleSelection: undefined;
+  UploadPhoto: undefined;
+  TellYourStory: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -29,8 +45,15 @@ export default function AuthNavigator() {
       <Stack.Screen name="UserTypeSelection" component={UserTypeSelection} />
       <Stack.Screen name="RegistrationOptions" component={RegistrationOptions} />
       <Stack.Screen name="EmailSignupForm" component={EmailSignupForm} />
-      <Stack.Screen name="CategorySelect" component={CategorySelect} />
-      <Stack.Screen name="BasicInfoForm" component={BasicInfoForm} />
+      <Stack.Screen name="ProfileSetup" component={ProfileSetup} />
+      <Stack.Screen name="UploadWork" component={UploadWork} />
+      <Stack.Screen name="EnterPhone" component={EnterPhoneScreen} />
+      <Stack.Screen name="VerifyOTP" component={VerifyOTPScreen} />
+      <Stack.Screen name="CreativeCategorySelection" component={CreativeCategorySelection} />
+      <Stack.Screen name="BuildPortfolio" component={BuildPortfolio} />
+      <Stack.Screen name="StyleSelection" component={StyleSelection} />
+      <Stack.Screen name="UploadPhoto" component={UploadPhoto} />
+      <Stack.Screen name="TellYourStory" component={TellYourStory} />
     </Stack.Navigator>
   );
 }
