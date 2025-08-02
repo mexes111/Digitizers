@@ -4,7 +4,7 @@ import { Typography } from '../../components/typography/Typography';
 import { useNavigation } from '@react-navigation/native';
 import { CurvedLineBackground } from '../../components/layout/CurvedLineBackground';
 import { BackButton } from '../../components/buttons/BackButton';
-import { Ionicons, MaterialIcons, Feather } from '@expo/vector-icons';
+// import { Ionicons, MaterialIcons, Feather } from '@expo/vector-icons';
 import CountryPicker, { Country, CountryCode } from 'react-native-country-picker-modal';
 
 interface ProfileSetupProps {
@@ -207,7 +207,7 @@ export default function ProfileSetup({ navigation }: ProfileSetupProps) {
 
   return (
     <View style={styles.container}>
-      <StatusBar barStyle="light-content" backgroundColor="#0A0A0A" />
+      {/* <StatusBar barStyle="light-content" backgroundColor="#0A0A0A" />
       
       <View style={styles.backgroundContainer}>
         <CurvedLineBackground/>
@@ -381,7 +381,7 @@ export default function ProfileSetup({ navigation }: ProfileSetupProps) {
           filterPlaceholderTextColor: 'rgba(255, 255, 255, 0.5)',
           activeOpacity: 0.7,
         }}
-      />
+      /> */}
     </View>
   );
 }
