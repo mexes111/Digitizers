@@ -47,7 +47,7 @@ export default function StyleSelection({ navigation }: StyleSelectionProps) {
 
   const styles = StyleSheet.create({
     headerContainer: {
-      marginBottom: 60,
+      marginBottom: 30,
     },
     stylesContainer: {
       flexDirection: 'row',
@@ -55,17 +55,18 @@ export default function StyleSelection({ navigation }: StyleSelectionProps) {
       marginBottom: 80,
     },
     styleChip: {
-      paddingHorizontal: 20,
-      paddingVertical: 12,
+      paddingHorizontal: 10,
+      paddingVertical: 3,
       borderRadius: 25,
       backgroundColor: 'rgba(255, 255, 255, 0.1)',
       borderWidth: 1,
       borderColor: 'rgba(255, 255, 255, 0.2)',
       marginRight: 12,
       marginBottom: 12,
+      flexDirection: 'row'
     },
     styleChipSelected: {
-      backgroundColor: '#007AFF',
+      // backgroundColor: '#007AFF',
       borderColor: '#007AFF',
     },
     styleChipText: {
@@ -82,7 +83,7 @@ export default function StyleSelection({ navigation }: StyleSelectionProps) {
   const isButtonEnabled = selectedStyles.length > 0;
 
   return (
-    <ScreenContainer showCurvedLine={true} curvedLineVariant="large">
+    <ScreenContainer showCurvedLine={true} curvedLineVariant="default">
       <ScreenHeader
         title=""
         onBackPress={handleBack}
@@ -92,16 +93,16 @@ export default function StyleSelection({ navigation }: StyleSelectionProps) {
       
       <View style={styles.headerContainer}>
         <Typography style={{
-          fontSize: 32,
+          fontSize: 22,
           fontWeight: '700',
           color: '#FFFFFF',
           marginBottom: 12,
-          lineHeight: 40,
+          // lineHeight: 40,
         }}>
           What's your style?
         </Typography>
         <Typography style={{
-          fontSize: 16,
+          fontSize: 14,
           color: '#A8A8A8',
           lineHeight: 24,
         }}>
@@ -133,7 +134,7 @@ export default function StyleSelection({ navigation }: StyleSelectionProps) {
 
       <View style={styles.buttonContainer}>
         <PrimaryButton
-          title="Continue"
+          title="Save my Style"
           onPress={handleContinue}
           disabled={!isButtonEnabled}
         />

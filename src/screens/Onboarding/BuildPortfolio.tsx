@@ -3,10 +3,13 @@ import {
   View, 
   StyleSheet, 
   StatusBar, 
-  TouchableOpacity
+  TouchableOpacity,
+  Image
 } from 'react-native';
 import { Typography } from '../../components/typography/Typography';
 import { useNavigation } from '@react-navigation/native';
+import { BackButton } from '../../components/buttons/BackButton';
+import { ScreenContainer } from '../../components/layout/ScreenContainer';
 
 interface BuildPortfolioProps {
   navigation?: any;
@@ -16,7 +19,7 @@ export default function BuildPortfolio({ navigation }: BuildPortfolioProps) {
   const nav = useNavigation();
 
   const handleStartUploading = () => {
-    (navigation || nav).navigate('UploadPhoto');
+    (navigation || nav).navigate('UploadWork');
   };
 
   const handleSkip = () => {
@@ -48,7 +51,7 @@ export default function BuildPortfolio({ navigation }: BuildPortfolioProps) {
     },
     content: {
       flex: 1,
-      paddingHorizontal: 32,
+      // paddingHorizontal: 32,
       paddingTop: 60,
       zIndex: 10,
     },
@@ -67,8 +70,8 @@ export default function BuildPortfolio({ navigation }: BuildPortfolioProps) {
       fontWeight: '600',
     },
     iconContainer: {
-      alignItems: 'center',
-      marginBottom: 60,
+      // alignItems: 'center',
+      // marginBottom: 60,
     },
     iconWrapper: {
       flexDirection: 'row',
@@ -93,20 +96,20 @@ export default function BuildPortfolio({ navigation }: BuildPortfolioProps) {
       borderRadius: 12,
     },
     headerContainer: {
-      marginBottom: 60,
+      marginBottom: 30,
     },
     headerText: {
-      fontSize: 32,
+      fontSize: 24,
       fontWeight: '700',
       color: '#FFFFFF',
-      marginBottom: 16,
+      // marginBottom: 16,
       lineHeight: 40,
     },
     subHeaderText: {
-      fontSize: 16,
+      fontSize: 14,
       color: '#A8A8A8',
       lineHeight: 24,
-      marginBottom: 40,
+      // marginBottom: 40,
     },
     featuresContainer: {
       marginBottom: 80,
@@ -170,23 +173,13 @@ export default function BuildPortfolio({ navigation }: BuildPortfolioProps) {
   });
 
   return (
-    <View style={styles.container}>
-      <StatusBar barStyle="light-content" backgroundColor="#0A0A0A" />
-      
-      <View style={styles.backgroundContainer}>
-        <View style={styles.curvedLine} />
-        
+    <ScreenContainer>
+      {/* <StatusBar barStyle="light-content" backgroundColor="#0A0A0A" /> */}        
         <View style={styles.content}>
-          <TouchableOpacity style={styles.backButton} onPress={handleBack}>
-            <Typography style={styles.backButtonText}>‹</Typography>
-          </TouchableOpacity>
+        <BackButton onPress={handleBack} />
           
           <View style={styles.iconContainer}>
-            <View style={styles.iconWrapper}>
-              <Typography style={styles.musicIcon}>🎵</Typography>
-              <Typography style={styles.imageIcon}>🖼️</Typography>
-              <Typography style={styles.videoIcon}>▶️</Typography>
-            </View>
+          <Image resizeMode='contain' style={{height: 100, width: 100}} source={require('../../assets/music.png')} />
           </View>
           
           <View style={styles.headerContainer}>
@@ -241,7 +234,6 @@ export default function BuildPortfolio({ navigation }: BuildPortfolioProps) {
             </TouchableOpacity>
           </View>
         </View>
-      </View>
-    </View>
+    </ScreenContainer>
   );
 }

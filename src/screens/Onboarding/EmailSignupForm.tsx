@@ -78,7 +78,7 @@ export default function EmailSignupForm({ navigation }: EmailSignupFormProps) {
     >
       <ScreenHeader
         title="Enter your email address"
-        subtitle="We'll use this for important updates and{'\n'}OTP when your number isn't available"
+        subtitle="We'll use this for important updates and OTP when your number isn't available"
         onBackPress={handleBack}
       />
 

@@ -1,57 +1,116 @@
-import React from 'react';
-import { KeyboardAvoidingView, Platform, TouchableWithoutFeedback, Keyboard, View, StyleSheet } from 'react-native';
-import { ScreenWrapper } from '../../components/layout/ScreenWrapper';
-import { FormCard } from '../../components/layout/FormCard';
+import React, { useState } from 'react';
+import { View, TextInput, TouchableOpacity, StyleSheet, StatusBar } from 'react-native';
 import { Typography } from '../../components/typography/Typography';
-import { PhoneNumberInput } from '../../components/inputs/PhoneNumberInput';
 import { PrimaryButton } from '../../components/buttons/PrimaryButton';
-import { BackButton } from '../../components/buttons/BackButton';
-import { useAuthStore } from '../../stores/authStore';
-import { useTheme } from '../../theme/ThemeProvider';
+import { SimpleCountryPicker } from '../../components/inputs/SimpleCountryPicker';
+import { CurvedLineBackground } from '../../components/layout/CurvedLineBackground';
 
 interface EnterPhoneScreenProps {
   navigation: any;
 }
 
-export const EnterPhoneScreen: React.FC<EnterPhoneScreenProps> = ({ navigation }) => {
-  const { theme } = useTheme();
-  const { 
-    phoneNumber, 
-    countryCode, 
-    isLoading, 
-    setPhoneNumber, 
-    setCountryCode, 
-    sendOTP 
-  } = useAuthStore();
+interface Country {
+  code: string;
+  name: string;
+  flag: string;
+  callingCode: string;
+}
 
-  const handleSendOTP = async () => {
+export const EnterPhoneScreen: React.FC<EnterPhoneScreenProps> = ({ navigation }) => {
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [selectedCountry, setSelectedCountry] = useState<Country>({
+    code: 'NG',
+    name: 'Nigeria',
+    flag: '🇳🇬',
+    callingCode: '+234'
+  });
+
+  const handleSendOTP = () => {
     if (phoneNumber.length >= 10) {
-      await sendOTP();
-      navigation.navigate('VerifyOTP');
+      navigation.navigate('VerifyOTP', { 
+        phoneNumber: selectedCountry.callingCode + phoneNumber 
+      });
     }
   };
 
-  const handleCountryChange = (country: any) => {
-    setCountryCode(`+${country.callingCode?.[0]}`);
+  const formatPhoneNumber = (text: string) => {
+    // Remove all non-numeric characters
+    const cleaned = text.replace(/\D/g, '');
+    
+    // Format as (000) 000-0000
+    const match = cleaned.match(/^(\d{0,3})(\d{0,3})(\d{0,4})$/);
+    if (match) {
+      let formatted = '';
+      if (match[1]) formatted += `(${match[1]}`;
+      if (match[1] && match[1].length === 3) formatted += ') ';
+      if (match[2]) formatted += match[2];
+      if (match[2] && match[2].length === 3) formatted += '-';
+      if (match[3]) formatted += match[3];
+      return formatted;
+    }
+    return text;
+  };
+
+  const handlePhoneChange = (text: string) => {
+    const cleaned = text.replace(/\D/g, '');
+    setPhoneNumber(cleaned);
   };
 
   const styles = StyleSheet.create({
     container: {
       flex: 1,
+      backgroundColor: '#000000',
+      paddingHorizontal: 20,
+    },
+    backButton: {
+      width: 40,
+      height: 40,
+      backgroundColor: '#1C1C1E',
+      borderRadius: 8,
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginTop: 100,
+      // marginBottom: 40,
+    },
+    content: {
+      flex: 1,
       justifyContent: 'space-between',
     },
-    contentContainer: {
+    headerSection: {
       flex: 1,
+      marginTop: 50
+      // justifyContent: 'center',
     },
-    headerContainer: {
-      marginBottom: theme.spacing.xl,
+    title: {
+      fontSize: 22,
+      fontWeight: 'bold',
+      color: '#FFFFFF',
+      marginBottom: 8,
     },
-    formContainer: {
+    subtitle: {
+      fontSize: 14,
+      color: '#8E8E93',
+      lineHeight: 22,
+    },
+    inputContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      backgroundColor: '#1C1C1E',
+      borderRadius: 12,
+      borderWidth: 1,
+      borderColor: '#38383A',
+      paddingHorizontal: 16,
+      paddingVertical: 12,
+      marginTop: 40,
+    },
+    phoneInput: {
       flex: 1,
-      justifyContent: 'center',
+      fontSize: 16,
+      color: '#FFFFFF',
+      marginLeft: 12,
     },
     buttonContainer: {
-      paddingBottom: theme.spacing.lg,
+      paddingBottom: 50,
     },
     circularBackground: {
       position: 'absolute',
@@ -60,70 +119,58 @@ export const EnterPhoneScreen: React.FC<EnterPhoneScreenProps> = ({ navigation }
       width: 300,
       height: 300,
       borderRadius: 150,
-      backgroundColor: theme.colors.primary + '20',
-    },
-    circularBackground2: {
-      position: 'absolute',
-      top: 100,
-      left: -150,
-      width: 200,
-      height: 200,
-      borderRadius: 100,
-      backgroundColor: theme.colors.secondary + '15',
+      backgroundColor: '#007AFF20',
     },
   });
 
   return (
-    <ScreenWrapper>
-      <View style={styles.circularBackground} />
-      <View style={styles.circularBackground2} />
+    <View style={styles.container}>
+      <StatusBar barStyle="light-content" backgroundColor="#000000" />
       
-      <KeyboardAvoidingView
-        style={{ flex: 1 }}
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 20}
+      {/* Decorative background */}
+      <CurvedLineBackground />
+      
+      <TouchableOpacity 
+        style={styles.backButton}
+        onPress={() => navigation.goBack()}
       >
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          <View style={styles.container}>
-            <View style={styles.contentContainer}>
-              <BackButton onPress={() => navigation.goBack()} />
-              
-              <View style={styles.headerContainer}>
-                <Typography variant="heading" color="textPrimary" weight="bold">
-                  Enter your phone number
-                </Typography>
-                <Typography 
-                  variant="body" 
-                  color="textSecondary" 
-                  style={{ marginTop: 8 }}
-                >
-                  We'll send you a verification code to get started securely
-                </Typography>
-              </View>
+        <Typography variant="body" style={{ color: '#FFFFFF', fontSize: 18 }}>←</Typography>
+      </TouchableOpacity>
 
-              <View style={styles.formContainer}>
-                <FormCard>
-                  <PhoneNumberInput
-                    value={phoneNumber}
-                    onChangeText={setPhoneNumber}
-                    onCountryChange={handleCountryChange}
-                    placeholder="(000) 000-0000"
-                  />
-                </FormCard>
-              </View>
-            </View>
+      <View style={styles.content}>
+        <View style={styles.headerSection}>
+          <Typography style={styles.title}>
+            Enter your phone number
+          </Typography>
+          <Typography style={styles.subtitle}>
+            We'll send you a verification code to get started securely
+          </Typography>
 
-            <View style={styles.buttonContainer}>
-              <PrimaryButton
-                title="Send OTP"
-                onPress={handleSendOTP}
-                loading={isLoading}
-                disabled={phoneNumber.length < 10}
-              />
-            </View>
+          <View style={styles.inputContainer}>
+            <SimpleCountryPicker
+              selectedCountry={selectedCountry}
+              onCountrySelect={setSelectedCountry}
+            />
+            <TextInput
+              style={styles.phoneInput}
+              value={formatPhoneNumber(phoneNumber)}
+              onChangeText={handlePhoneChange}
+              placeholder="(000) 000-0000"
+              placeholderTextColor="#8E8E93"
+              keyboardType="phone-pad"
+              maxLength={14} // (000) 000-0000
+            />
           </View>
-        </TouchableWithoutFeedback>
-      </KeyboardAvoidingView>
-    </ScreenWrapper>
+        </View>
+
+        <View style={styles.buttonContainer}>
+          <PrimaryButton
+            title="Send OTP"
+            onPress={handleSendOTP}
+            disabled={phoneNumber.length < 10}
+          />
+        </View>
+      </View>
+    </View>
   );
 };
