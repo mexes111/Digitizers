@@ -8,6 +8,8 @@ import {
 } from 'react-native';
 import { Typography } from '../../components/typography/Typography';
 import { useNavigation } from '@react-navigation/native';
+import { Gap, ProgressIndicator, ScreenContainer } from '../../components/layout';
+import { BackButton } from '../../components/buttons/BackButton';
 
 interface TellYourStoryProps {
   navigation?: any;
@@ -19,7 +21,7 @@ export default function TellYourStory({ navigation }: TellYourStoryProps) {
   const maxCharacters = 500;
 
   const handleSave = () => {
-    (navigation || nav).navigate('MainApp');
+    (navigation || nav).navigate('SocialMediaLinks');
   };
 
   const handleBack = () => {
@@ -47,8 +49,8 @@ export default function TellYourStory({ navigation }: TellYourStoryProps) {
     },
     content: {
       flex: 1,
-      paddingHorizontal: 32,
-      paddingTop: 60,
+      // paddingHorizontal: 32,
+      // paddingTop: 60,
       zIndex: 10,
     },
     backButton: {
@@ -90,32 +92,32 @@ export default function TellYourStory({ navigation }: TellYourStoryProps) {
       fontWeight: '600',
     },
     headerContainer: {
-      marginBottom: 40,
+      marginBottom: 20,
     },
     headerText: {
-      fontSize: 32,
+      fontSize: 24,
       fontWeight: '700',
       color: '#FFFFFF',
-      marginBottom: 12,
-      lineHeight: 40,
+      marginBottom: 6,
+      // lineHeight: 40,
     },
     subHeaderText: {
-      fontSize: 16,
+      fontSize: 14,
       color: '#A8A8A8',
-      lineHeight: 24,
+      // lineHeight: 24,
     },
     textInputContainer: {
       flex: 1,
       marginBottom: 20,
     },
     textInput: {
-      backgroundColor: 'rgba(255, 255, 255, 0.05)',
+      // backgroundColor: 'rgba(255, 255, 255, 0.05)',
       borderWidth: 1,
       borderColor: 'rgba(255, 255, 255, 0.2)',
-      borderRadius: 16,
+      borderRadius: 10,
       paddingHorizontal: 20,
       paddingVertical: 20,
-      fontSize: 16,
+      fontSize: 14,
       color: '#FFFFFF',
       textAlignVertical: 'top',
       minHeight: 200,
@@ -151,23 +153,13 @@ export default function TellYourStory({ navigation }: TellYourStoryProps) {
   });
 
   return (
-    <View style={styles.container}>
-      <StatusBar barStyle="light-content" backgroundColor="#0A0A0A" />
+    <ScreenContainer>
       
       <View style={styles.backgroundContainer}>
-        <View style={styles.curvedLine} />
-        
+        <Gap size='xl'/>
+        <BackButton onPress={handleBack} />
         <View style={styles.content}>
-          <TouchableOpacity style={styles.backButton} onPress={handleBack}>
-            <Typography style={styles.backButtonText}>‹</Typography>
-          </TouchableOpacity>
-          
-          <View style={styles.progressContainer}>
-            <View style={styles.progressBar}>
-              <View style={styles.progressFill} />
-            </View>
-            <Typography style={styles.progressText}>2/3</Typography>
-          </View>
+          <ProgressIndicator currentStep={2} totalSteps={3} />
           
           <View style={styles.headerContainer}>
             <Typography style={styles.headerText}>
@@ -204,6 +196,6 @@ export default function TellYourStory({ navigation }: TellYourStoryProps) {
           </TouchableOpacity>
         </View>
       </View>
-    </View>
+    </ScreenContainer>
   );
 }

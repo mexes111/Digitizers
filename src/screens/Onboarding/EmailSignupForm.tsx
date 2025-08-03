@@ -46,6 +46,7 @@ export default function EmailSignupForm({ navigation }: EmailSignupFormProps) {
       paddingHorizontal: 16,
       height: 64,
       marginBottom: 40,
+      marginTop: 15
     },
     emailInputContainerFocused: {
       borderColor: '#007AFF',

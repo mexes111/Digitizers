@@ -8,6 +8,11 @@ import RegistrationOptions from '../screens/Onboarding/RegistrationOptions';
 import EmailSignupForm from '../screens/Onboarding/EmailSignupForm';
 import ProfileSetup from '../screens/Onboarding/ProfileSetup';
 import UploadWork from '../screens/Onboarding/UploadWork';
+import SocialMediaLinks from '../screens/Onboarding/SocialMediaLinks';
+import ProfileSuccess from '../screens/Onboarding/ProfileSuccess';
+import CreatorCardScreen from '../screens/Onboarding/CreatorCardScreen';
+import OnboardingComplete from '../screens/Onboarding/OnboardingComplete';
+import Subscription from '../screens/Onboarding/Subscription';
 import { EnterPhoneScreen } from '../screens/Auth/EnterPhoneScreen';
 import { VerifyOTPScreen } from '../screens/Auth/VerifyOTPScreen';
 import CreativeCategorySelection from '../screens/Onboarding/CreativeCategorySelection';
@@ -24,6 +29,11 @@ export type RootStackParamList = {
   EmailSignupForm: undefined;
   ProfileSetup: undefined;
   UploadWork: undefined;
+  SocialMediaLinks: undefined;
+  ProfileSuccess: undefined;
+  CreatorCard: undefined;
+  OnboardingComplete: undefined;
+  Subscription: undefined;
   EnterPhone: undefined;
   VerifyOTP: undefined;
   SignIn: undefined;
@@ -47,6 +57,11 @@ export default function AuthNavigator() {
       <Stack.Screen name="EmailSignupForm" component={EmailSignupForm} />
       <Stack.Screen name="ProfileSetup" component={ProfileSetup} />
       <Stack.Screen name="UploadWork" component={UploadWork} />
+      <Stack.Screen name="SocialMediaLinks" component={SocialMediaLinks} />
+      <Stack.Screen name="ProfileSuccess" component={ProfileSuccess} />
+      <Stack.Screen name="CreatorCard" component={CreatorCardScreen} />
+      <Stack.Screen name="OnboardingComplete" component={OnboardingComplete} />
+      <Stack.Screen name="Subscription" component={Subscription} />
       <Stack.Screen name="EnterPhone" component={EnterPhoneScreen} />
       <Stack.Screen name="VerifyOTP" component={VerifyOTPScreen} />
       <Stack.Screen name="CreativeCategorySelection" component={CreativeCategorySelection} />
