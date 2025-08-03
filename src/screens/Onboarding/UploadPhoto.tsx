@@ -10,6 +10,9 @@ import {
 } from 'react-native';
 import { Typography } from '../../components/typography/Typography';
 import { useNavigation } from '@react-navigation/native';
+import { Gap, ProgressIndicator } from '../../components/layout';
+import { ScreenContainer } from '../../components/layout';
+import { BackButton } from '../../components/buttons/BackButton';
 
 interface UploadPhotoProps {
   navigation?: any;
@@ -61,8 +64,8 @@ export default function UploadPhoto({ navigation }: UploadPhotoProps) {
     },
     content: {
       flex: 1,
-      paddingHorizontal: 32,
-      paddingTop: 60,
+      // paddingHorizontal: 32,
+      // paddingTop: 60,
       zIndex: 10,
     },
     backButton: {
@@ -104,15 +107,15 @@ export default function UploadPhoto({ navigation }: UploadPhotoProps) {
       fontWeight: '600',
     },
     headerText: {
-      fontSize: 32,
+      fontSize: 24,
       fontWeight: '700',
       color: '#FFFFFF',
-      marginBottom: 40,
-      lineHeight: 40,
+      marginBottom: 20,
+      // lineHeight: 40,
     },
     uploadSection: {
       flexDirection: 'row',
-      marginBottom: 40,
+      marginBottom: 20,
     },
     uploadPlaceholder: {
       width: 80,
@@ -145,7 +148,7 @@ export default function UploadPhoto({ navigation }: UploadPhotoProps) {
       flex: 1,
     },
     sectionTitle: {
-      fontSize: 18,
+      fontSize: 14,
       fontWeight: '600',
       color: '#FFFFFF',
       marginBottom: 20,
@@ -154,13 +157,13 @@ export default function UploadPhoto({ navigation }: UploadPhotoProps) {
       marginBottom: 20,
     },
     textInput: {
-      backgroundColor: 'rgba(255, 255, 255, 0.05)',
+      // backgroundColor: 'rgba(255, 255, 255, 0.05)',
       borderWidth: 1,
       borderColor: 'rgba(255, 255, 255, 0.2)',
-      borderRadius: 12,
+      borderRadius: 10,
       paddingHorizontal: 16,
       paddingVertical: 14,
-      fontSize: 16,
+      fontSize: 14,
       color: '#FFFFFF',
       minHeight: 50,
     },
@@ -210,33 +213,19 @@ export default function UploadPhoto({ navigation }: UploadPhotoProps) {
   });
 
   return (
-    <View style={styles.container}>
-      <StatusBar barStyle="light-content" backgroundColor="#0A0A0A" />
-      
+    <ScreenContainer>
+      <Gap direction='vertical' size='xl' />
+      <BackButton onPress={handleBack} />
+      <ProgressIndicator currentStep={1} totalSteps={3} />
       <View style={styles.backgroundContainer}>
-        <View style={styles.curvedLine} />
         
         <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
-          <TouchableOpacity style={styles.backButton} onPress={handleBack}>
-            <Typography style={styles.backButtonText}>‹</Typography>
-          </TouchableOpacity>
-          
-          <View style={styles.progressContainer}>
-            <View style={styles.progressBar}>
-              <View style={styles.progressFill} />
-            </View>
-            <Typography style={styles.progressText}>1/3</Typography>
-          </View>
-          
-          <Typography style={styles.headerText}>
+         <Typography style={styles.headerText}>
             Upload Photo
           </Typography>
 
           <View style={styles.uploadSection}>
-            <TouchableOpacity style={styles.uploadPlaceholder}>
-              <Typography style={styles.uploadIcon}>⬆</Typography>
-              <Typography style={styles.uploadCounter}>{uploadCount}/{maxUploads}</Typography>
-            </TouchableOpacity>
+            <Image resizeMode='contain' style={{height: 80, width: 80}} source={require('../../assets/upload.png')}/>
             
             {/* Sample uploaded image */}
             <Image 
@@ -304,6 +293,6 @@ export default function UploadPhoto({ navigation }: UploadPhotoProps) {
           </View>
         </ScrollView>
       </View>
-    </View>
+    </ScreenContainer>
   );
 }

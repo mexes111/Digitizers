@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { View, TouchableOpacity, StyleSheet, StatusBar, ScrollView } from 'react-native';
 import { Typography } from '../../components/typography/Typography';
 import { useNavigation } from '@react-navigation/native';
+import { ScreenContainer } from '../../components/layout/ScreenContainer';
+import { BackButton } from '../../components/buttons/BackButton';
+import { ProgressIndicator } from '../../components/layout/ProgressIndicator';
+import { Gap } from '../../components/layout';
 
 interface UploadWorkProps {
   navigation?: any;
@@ -42,7 +46,7 @@ export default function UploadWork({ navigation }: UploadWorkProps) {
 
   const handleContinue = () => {
     // Navigate to next screen or complete onboarding
-    (navigation || nav).navigate('MainApp');
+    (navigation || nav).navigate('UploadPhoto');
   };
 
   const handleBack = () => {
@@ -100,28 +104,28 @@ export default function UploadWork({ navigation }: UploadWorkProps) {
     },
     content: {
       flex: 1,
-      paddingHorizontal: 24,
+      paddingHorizontal: 4,
     },
     headerText: {
-      fontSize: 32,
+      fontSize: 24,
       fontWeight: '800',
       color: '#FFFFFF',
-      marginBottom: 12,
-      lineHeight: 40,
+      marginBottom: 2,
+      // lineHeight: 40,
     },
     subHeaderText: {
-      fontSize: 16,
+      fontSize: 14,
       color: '#A8A8A8',
-      marginBottom: 48,
-      lineHeight: 24,
+      marginBottom: 28,
+      // lineHeight: 24,
     },
     optionsContainer: {
       marginBottom: 60,
     },
     optionCard: {
-      borderRadius: 16,
-      borderWidth: 2,
-      padding: 24,
+      borderRadius: 10,
+      borderWidth: 1,
+      padding: 14,
       marginBottom: 16,
       flexDirection: 'row',
       alignItems: 'center',
@@ -134,7 +138,7 @@ export default function UploadWork({ navigation }: UploadWorkProps) {
     },
     unselectedCard: {
       borderColor: 'rgba(255, 255, 255, 0.2)',
-      backgroundColor: 'rgba(255, 255, 255, 0.05)',
+      // backgroundColor: 'rgba(255, 255, 255, 0.05)',
     },
     optionLeft: {
       flexDirection: 'row',
@@ -149,13 +153,13 @@ export default function UploadWork({ navigation }: UploadWorkProps) {
       flex: 1,
     },
     optionTitle: {
-      fontSize: 18,
+      fontSize: 14,
       fontWeight: '700',
       color: '#FFFFFF',
-      marginBottom: 6,
+      // marginBottom: 6,
     },
     optionDescription: {
-      fontSize: 14,
+      fontSize: 12,
       color: '#A8A8A8',
       lineHeight: 20,
     },
@@ -163,7 +167,7 @@ export default function UploadWork({ navigation }: UploadWorkProps) {
       width: 32,
       height: 32,
       borderRadius: 16,
-      backgroundColor: 'rgba(255, 255, 255, 0.2)',
+      // backgroundColor: 'rgba(255, 255, 255, 0.2)',
       justifyContent: 'center',
       alignItems: 'center',
       marginLeft: 16,
@@ -174,7 +178,8 @@ export default function UploadWork({ navigation }: UploadWorkProps) {
     addIcon: {
       fontSize: 20,
       color: '#FFFFFF',
-      fontWeight: '600',
+      opacity: 0.5
+      // fontWeight: '600',
     },
     continueButton: {
       backgroundColor: '#007AFF',
@@ -200,23 +205,10 @@ export default function UploadWork({ navigation }: UploadWorkProps) {
   });
 
   return (
-    <View style={styles.container}>
-      <StatusBar barStyle="light-content" backgroundColor="#0A0A0A" />
-      
-      <View style={styles.header}>
-        <TouchableOpacity style={styles.backButton} onPress={handleBack}>
-          <Typography style={styles.backIcon}>←</Typography>
-        </TouchableOpacity>
-        
-        <View style={styles.progressContainer}>
-          <View style={styles.progressBar}>
-            <View style={styles.progressFill} />
-          </View>
-          <Typography style={styles.progressText}>1/3</Typography>
-        </View>
-        
-        <View style={{ width: 44 }} />
-      </View>
+    <ScreenContainer>
+      <Gap direction='vertical' size='xl'/>
+     <BackButton onPress={handleBack}/>      
+     <ProgressIndicator currentStep={1} totalSteps={3} />
 
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
         <Typography style={styles.headerText}>
@@ -271,6 +263,6 @@ export default function UploadWork({ navigation }: UploadWorkProps) {
           </Typography>
         </TouchableOpacity>
       </ScrollView>
-    </View>
+    </ScreenContainer>
   );
 }
