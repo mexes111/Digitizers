@@ -20,6 +20,8 @@ import BuildPortfolio from '../screens/Onboarding/BuildPortfolio';
 import StyleSelection from '../screens/Onboarding/StyleSelection';
 import UploadPhoto from '../screens/Onboarding/UploadPhoto';
 import TellYourStory from '../screens/Onboarding/TellYourStory';
+import AddYourTrack from '../screens/Onboarding/AddYourTrack';
+import AddYourVideo from '../screens/Onboarding/AddYourVideo';
 
 export type RootStackParamList = {
   SplashScreen: undefined;
@@ -43,6 +45,9 @@ export type RootStackParamList = {
   StyleSelection: undefined;
   UploadPhoto: undefined;
   TellYourStory: undefined;
+  AddYourTrack: undefined;
+  AddYourVideo: undefined
+
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -69,6 +74,8 @@ export default function AuthNavigator() {
       <Stack.Screen name="StyleSelection" component={StyleSelection} />
       <Stack.Screen name="UploadPhoto" component={UploadPhoto} />
       <Stack.Screen name="TellYourStory" component={TellYourStory} />
+      <Stack.Screen name="AddYourTrack" component={AddYourTrack} />
+      <Stack.Screen name="AddYourVideo" component={AddYourVideo} />
     </Stack.Navigator>
   );
 }

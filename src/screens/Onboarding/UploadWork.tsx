@@ -13,7 +13,7 @@ interface UploadWorkProps {
 
 export default function UploadWork({ navigation }: UploadWorkProps) {
   const nav = useNavigation();
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
   const uploadOptions = [
     {
@@ -21,32 +21,44 @@ export default function UploadWork({ navigation }: UploadWorkProps) {
       title: 'Upload Photos',
       description: 'Showcase your visual work and style',
       icon: '📷',
+      screen: 'UploadPhoto',
     },
     {
       id: 'videos',
       title: 'Upload Videos',
       description: 'Share performances, behind the scenes, reels etc',
       icon: '🎥',
+      screen: 'AddYourVideo',
     },
     {
       id: 'music',
       title: 'Upload Music',
       description: 'Let your tracks speak for themselves',
       icon: '🎵',
+      screen: 'AddYourTrack',
     },
   ];
 
-  const handleOptionToggle = (optionId: string) => {
-    setSelectedOptions(prev => 
-      prev.includes(optionId) 
-        ? prev.filter(id => id !== optionId)
-        : [...prev, optionId]
-    );
+  const handleOptionSelect = (optionId: string) => {
+    setSelectedOption(optionId);
+    
+    // Find the selected option and navigate to its corresponding screen
+    const selectedOptionData = uploadOptions.find(option => option.id === optionId);
+    if (selectedOptionData) {
+      // Navigate immediately after selection
+      setTimeout(() => {
+        (navigation || nav).navigate(selectedOptionData.screen as never);
+      }, 200); // Small delay for visual feedback
+    }
   };
 
   const handleContinue = () => {
-    // Navigate to next screen or complete onboarding
-    (navigation || nav).navigate('UploadPhoto');
+    if (selectedOption) {
+      const selectedOptionData = uploadOptions.find(option => option.id === selectedOption);
+      if (selectedOptionData) {
+        (navigation || nav).navigate(selectedOptionData.screen as never);
+      }
+    }
   };
 
   const handleBack = () => {
@@ -182,25 +194,26 @@ export default function UploadWork({ navigation }: UploadWorkProps) {
       // fontWeight: '600',
     },
     continueButton: {
-      backgroundColor: '#007AFF',
+      backgroundColor: selectedOption ? '#007AFF' : 'rgba(0, 122, 255, 0.3)',
       height: 56,
       borderRadius: 28,
       justifyContent: 'center',
       alignItems: 'center',
       marginBottom: 40,
-      shadowColor: '#007AFF',
+      shadowColor: selectedOption ? '#007AFF' : 'transparent',
       shadowOffset: {
         width: 0,
         height: 8,
       },
-      shadowOpacity: 0.3,
+      shadowOpacity: selectedOption ? 0.3 : 0,
       shadowRadius: 16,
-      elevation: 8,
+      elevation: selectedOption ? 8 : 0,
     },
     continueButtonText: {
       fontSize: 18,
       fontWeight: '700',
       color: '#FFFFFF',
+      opacity: selectedOption ? 1 : 0.6,
     },
   });
 
@@ -215,7 +228,7 @@ export default function UploadWork({ navigation }: UploadWorkProps) {
           Upload Your Work
         </Typography>
         <Typography style={styles.subHeaderText}>
-          Start with any media type. You can always add more later.
+          Choose one option to get started. You can add more content later.
         </Typography>
 
         <View style={styles.optionsContainer}>
@@ -224,9 +237,9 @@ export default function UploadWork({ navigation }: UploadWorkProps) {
               key={option.id}
               style={[
                 styles.optionCard,
-                selectedOptions.includes(option.id) ? styles.selectedCard : styles.unselectedCard,
+                selectedOption === option.id ? styles.selectedCard : styles.unselectedCard,
               ]}
-              onPress={() => handleOptionToggle(option.id)}
+              onPress={() => handleOptionSelect(option.id)}
             >
               <View style={styles.optionLeft}>
                 <Typography style={styles.optionIcon}>
@@ -243,10 +256,10 @@ export default function UploadWork({ navigation }: UploadWorkProps) {
               </View>
               <View style={[
                 styles.addButton,
-                selectedOptions.includes(option.id) && styles.addButtonSelected,
+                selectedOption === option.id && styles.addButtonSelected,
               ]}>
                 <Typography style={styles.addIcon}>
-                  {selectedOptions.includes(option.id) ? '✓' : '+'}
+                  {selectedOption === option.id ? '✓' : '+'}
                 </Typography>
               </View>
             </TouchableOpacity>
@@ -257,9 +270,10 @@ export default function UploadWork({ navigation }: UploadWorkProps) {
           style={styles.continueButton}
           onPress={handleContinue}
           activeOpacity={0.8}
+          disabled={!selectedOption}
         >
           <Typography style={styles.continueButtonText}>
-            Tell Your Story
+            Continue
           </Typography>
         </TouchableOpacity>
       </ScrollView>

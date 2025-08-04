@@ -68,6 +68,7 @@ export default function StyleSelection({ navigation }: StyleSelectionProps) {
     styleChipSelected: {
       // backgroundColor: '#007AFF',
       borderColor: '#007AFF',
+
     },
     styleChipText: {
       fontSize: 14,
