@@ -1,5 +1,7 @@
 import { create } from 'zustand';
 
+type UserType = 'creative' | 'industry' | null;
+
 interface AuthState {
   phoneNumber: string;
   countryCode: string;
@@ -7,18 +9,25 @@ interface AuthState {
   isLoading: boolean;
   resendTimer: number;
   canResend: boolean;
+  userType: UserType;
+  isAuthenticated: boolean;
+  shouldUseProfNavigator: boolean; // New flag for professional navigation
   
   // Actions
   setPhoneNumber: (phone: string) => void;
   setCountryCode: (code: string) => void;
   setOtpCode: (code: string) => void;
   setLoading: (loading: boolean) => void;
+  setUserType: (type: UserType) => void;
+  setAuthenticated: (authenticated: boolean) => void;
+  setShouldUseProfNavigator: (shouldUse: boolean) => void;
   startResendTimer: () => void;
   decrementTimer: () => void;
   resetTimer: () => void;
   sendOTP: () => Promise<void>;
   verifyOTP: () => Promise<void>;
   resendOTP: () => Promise<void>;
+  logout: () => void;
 }
 
 export const useAuthStore = create<AuthState>((set, get) => ({
@@ -28,11 +37,17 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   isLoading: false,
   resendTimer: 0,
   canResend: true,
+  userType: null,
+  isAuthenticated: false,
+  shouldUseProfNavigator: false,
 
   setPhoneNumber: (phone: string) => set({ phoneNumber: phone }),
   setCountryCode: (code: string) => set({ countryCode: code }),
   setOtpCode: (code: string) => set({ otpCode: code }),
   setLoading: (loading: boolean) => set({ isLoading: loading }),
+  setUserType: (type: UserType) => set({ userType: type }),
+  setAuthenticated: (authenticated: boolean) => set({ isAuthenticated: authenticated }),
+  setShouldUseProfNavigator: (shouldUse: boolean) => set({ shouldUseProfNavigator: shouldUse }),
 
   startResendTimer: () => {
     set({ resendTimer: 30, canResend: false });
@@ -84,6 +99,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       await new Promise(resolve => setTimeout(resolve, 1500));
       console.log(`Verifying OTP: ${otpCode}`);
       // Handle successful verification
+      set({ isAuthenticated: true });
     } catch (error) {
       console.error('Failed to verify OTP:', error);
     } finally {
@@ -108,4 +124,14 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       set({ isLoading: false });
     }
   },
+
+  logout: () => set({ 
+    phoneNumber: '', 
+    otpCode: '', 
+    userType: null, 
+    isAuthenticated: false,
+    shouldUseProfNavigator: false,
+    resendTimer: 0,
+    canResend: true 
+  }),
 }));

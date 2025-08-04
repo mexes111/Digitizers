@@ -22,6 +22,7 @@ import UploadPhoto from '../screens/Onboarding/UploadPhoto';
 import TellYourStory from '../screens/Onboarding/TellYourStory';
 import AddYourTrack from '../screens/Onboarding/AddYourTrack';
 import AddYourVideo from '../screens/Onboarding/AddYourVideo';
+import SignIn from '../screens/Onboarding/SignIn';
 
 export type RootStackParamList = {
   SplashScreen: undefined;
@@ -46,8 +47,7 @@ export type RootStackParamList = {
   UploadPhoto: undefined;
   TellYourStory: undefined;
   AddYourTrack: undefined;
-  AddYourVideo: undefined
-
+  AddYourVideo: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -76,6 +76,7 @@ export default function AuthNavigator() {
       <Stack.Screen name="TellYourStory" component={TellYourStory} />
       <Stack.Screen name="AddYourTrack" component={AddYourTrack} />
       <Stack.Screen name="AddYourVideo" component={AddYourVideo} />
+      <Stack.Screen name="SignIn" component={SignIn} />
     </Stack.Navigator>
   );
 }

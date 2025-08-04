@@ -3,11 +3,11 @@ import { View, TouchableOpacity, StyleSheet, StatusBar, Image } from 'react-nati
 import { Typography } from '../../components/typography/Typography';
 import { useNavigation } from '@react-navigation/native';
 
-interface RegistrationOptionsProps {
+interface SignInProps {
   navigation?: any;
 }
 
-export default function RegistrationOptions({ navigation }: RegistrationOptionsProps) {
+export default function SignIn({ navigation }: SignInProps) {
   const nav = useNavigation();
 
   const handlePhoneSignup = () => {
@@ -30,7 +30,7 @@ export default function RegistrationOptions({ navigation }: RegistrationOptionsP
   };
 
   const handleSignIn = () => {
-    (navigation || nav).navigate('SignIn');
+    (navigation || nav).navigate('RegistrationOptions');
   };
 
   const styles = StyleSheet.create({
@@ -161,7 +161,7 @@ export default function RegistrationOptions({ navigation }: RegistrationOptionsP
     },
     signInContainer: {
       alignItems: 'center',
-      marginBottom: 40
+      marginBottom: 40,
     },
     signInText: {
       fontSize: 16,
@@ -187,10 +187,10 @@ export default function RegistrationOptions({ navigation }: RegistrationOptionsP
         
         <View style={styles.content}>
           <Typography style={styles.headerText}>
-            Create Your Account
+            Welcome Back
           </Typography>
           <Typography style={styles.subHeaderText}>
-            Join thousands of creatives already discovering opportunities
+            Sign in to continue discovering opportunities
           </Typography>
 
           <View style={styles.buttonContainer}>
@@ -200,7 +200,7 @@ export default function RegistrationOptions({ navigation }: RegistrationOptionsP
               activeOpacity={0.8}
             >
               <Typography style={styles.primaryButtonText}>
-                Sign up with Phone Number
+                Sign in with Phone Number
               </Typography>
             </TouchableOpacity>
 
@@ -266,7 +266,7 @@ export default function RegistrationOptions({ navigation }: RegistrationOptionsP
               </Typography>
               <TouchableOpacity onPress={handleSignIn}>
                 <Typography style={styles.signInLink}>
-                  Sign In
+                  Sign Up
                 </Typography>
               </TouchableOpacity>
             </View>

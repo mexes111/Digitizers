@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, TouchableOpacity, StyleSheet, StatusBar, Image } from 'react-native';
 import { Typography } from '../../components/typography/Typography';
 import { PrimaryButton } from '../../components/buttons/PrimaryButton';
+import { useAuthStore } from '../../stores/authStore';
 
 interface UserTypeSelectionProps {
   navigation: any;
@@ -9,6 +10,7 @@ interface UserTypeSelectionProps {
 
 export default function UserTypeSelection({ navigation }: UserTypeSelectionProps) {
   const [selectedType, setSelectedType] = useState<string | null>('creative');
+  const { setUserType, setShouldUseProfNavigator } = useAuthStore();
 
   const userTypes = [
     {
@@ -25,7 +27,17 @@ export default function UserTypeSelection({ navigation }: UserTypeSelectionProps
 
   const handleContinue = () => {
     if (selectedType) {
-      navigation.navigate('RegistrationOptions');
+      // Save the user type to the store
+      setUserType(selectedType as 'creative' | 'industry');
+      
+      // Navigate based on user type
+      if (selectedType === 'creative') {
+        navigation.navigate('RegistrationOptions');
+      } else if (selectedType === 'industry') {
+        // For industry professionals, trigger switch to ProfNavigator
+        setShouldUseProfNavigator(true);
+        navigation.navigate('ProfEmailSignupForm');
+      }
     }
   };
 
