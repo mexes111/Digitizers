@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, TouchableOpacity, StyleSheet, StatusBar, Image } from 'react-native';
 import { Typography } from '../../components/typography/Typography';
 import { PrimaryButton } from '../../components/buttons/PrimaryButton';
@@ -10,7 +10,8 @@ interface UserTypeSelectionProps {
 
 export default function UserTypeSelection({ navigation }: UserTypeSelectionProps) {
   const [selectedType, setSelectedType] = useState<string | null>('creative');
-  const { setUserType, setShouldUseProfNavigator } = useAuthStore();
+  const [pendingNavigation, setPendingNavigation] = useState<string | null>(null);
+  const { setUserType, setShouldUseProfNavigator, shouldUseProfNavigator } = useAuthStore();
 
   const userTypes = [
     {
@@ -25,18 +26,29 @@ export default function UserTypeSelection({ navigation }: UserTypeSelectionProps
     },
   ];
 
+  // Effect to handle navigation after navigator switch
+  useEffect(() => {
+    if (pendingNavigation && shouldUseProfNavigator) {
+      // Navigator has switched, now we can navigate
+      navigation.navigate(pendingNavigation);
+      setPendingNavigation(null);
+    }
+  }, [shouldUseProfNavigator, pendingNavigation, navigation]);
+
   const handleContinue = () => {
     if (selectedType) {
       // Save the user type to the store
       setUserType(selectedType as 'creative' | 'industry');
       
-      // Navigate based on user type
       if (selectedType === 'creative') {
+        setShouldUseProfNavigator(false);
+        // Navigate immediately for creative users since no navigator switch needed
         navigation.navigate('RegistrationOptions');
       } else if (selectedType === 'industry') {
         // For industry professionals, trigger switch to ProfNavigator
         setShouldUseProfNavigator(true);
-        navigation.navigate('ProfEmailSignupForm');
+        // Set pending navigation - the useEffect will handle it after navigator switch
+        setPendingNavigation('ProfEmailSignupForm');
       }
     }
   };
