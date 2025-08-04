@@ -36,22 +36,22 @@ export const Typography: React.FC<TypographyProps> = ({
       case 'body':
         return {
           fontSize: theme.fontSize.md,
-          lineHeight: theme.fontSize.md * 1.4,
+          // lineHeight: theme.fontSize.md * 1.4,
         };
       case 'caption':
         return {
           fontSize: theme.fontSize.sm,
-          lineHeight: theme.fontSize.sm * 1.3,
+          // lineHeight: theme.fontSize.sm * 1.3,
         };
       case 'button':
         return {
           fontSize: theme.fontSize.md,
-          lineHeight: theme.fontSize.md * 1.2,
+          // lineHeight: theme.fontSize.md * 1.2,
         };
       default:
         return {
           fontSize: theme.fontSize.md,
-          lineHeight: theme.fontSize.md * 1.4,
+          // lineHeight: theme.fontSize.md * 1.4,
         };
     }
   };

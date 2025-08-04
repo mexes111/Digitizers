@@ -4,60 +4,71 @@ export const spacing = {
   md: 16,
   lg: 24,
   xl: 32,
-  xxl: 48,
-  xxxl: 64,
-} as const;
+  xxl: 40,
+  xxxl: 48,
+};
 
 export const borderRadius = {
-  sm: 4,
-  md: 8,
-  lg: 12,
-  xl: 16,
-  xxl: 24,
-  round: 50,
-} as const;
-
-export const fontSize = {
-  xs: 12,
-  sm: 14,
-  md: 16,
-  lg: 18,
+  xs: 4,
+  sm: 8,
+  md: 12,
+  lg: 16,
   xl: 20,
   xxl: 24,
   xxxl: 32,
-  xxxxl: 40,
-} as const;
+};
+
+export const fontSize = {
+  xs: 10,
+  sm: 12,
+  md: 14,
+  lg: 16,
+  xl: 18,
+  xxl: 20,
+  xxxl: 24,
+  xxxxl: 28,
+  xxxxxl: 32,
+};
 
 export const fontWeight = {
-  light: '300',
-  regular: '400',
-  medium: '500',
-  semibold: '600',
-  bold: '700',
-} as const;
+  light: '300' as const,
+  regular: '400' as const,
+  medium: '500' as const,
+  semibold: '600' as const,
+  bold: '700' as const,
+};
+
+// Font families for Public Sans using Expo Google Fonts
+export const fontFamily = {
+  light: 'PublicSans_300Light',
+  regular: 'PublicSans_400Regular',
+  medium: 'PublicSans_500Medium',
+  semibold: 'PublicSans_600SemiBold',
+  bold: 'PublicSans_700Bold',
+};
 
 export const shadows = {
-  sm: {
+  small: {
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 1,
     },
-    shadowOpacity: 0.18,
-    shadowRadius: 1.0,
-    elevation: 1,
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+    elevation: 3,
   },
-  md: {
+  medium: {
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 2,
     },
-    shadowOpacity: 0.23,
-    shadowRadius: 2.62,
-    elevation: 4,
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
-  lg: {
+  large: {
     shadowColor: '#000',
     shadowOffset: {
       width: 0,

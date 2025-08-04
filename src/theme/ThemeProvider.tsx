@@ -1,6 +1,6 @@
 import React, { createContext, useContext, ReactNode } from 'react';
 import { colors, ColorScheme, Colors } from './colors';
-import { spacing, borderRadius, fontSize, fontWeight, shadows } from './spacing';
+import { spacing, borderRadius, fontSize, fontWeight, fontFamily, shadows } from './spacing';
 import { useThemeStore } from '../stores/themeStore';
 
 export interface Theme {
@@ -9,6 +9,7 @@ export interface Theme {
   borderRadius: typeof borderRadius;
   fontSize: typeof fontSize;
   fontWeight: typeof fontWeight;
+  fontFamily: typeof fontFamily;
   shadows: typeof shadows;
   isDark: boolean;
 }
@@ -32,6 +33,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     borderRadius,
     fontSize,
     fontWeight,
+    fontFamily,
     shadows,
     isDark: colorScheme === 'dark',
   };

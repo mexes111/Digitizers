@@ -16,8 +16,17 @@
       "supportsTablet": true
     },
     "android": {
-      "permissions": []
+      "permissions": [],
+      "package": "com.matthewbarnabasc.digitizersapp"
     },
-    "web": {}
+    "web": {},
+    "extra": {
+      "eas": {
+        "projectId": "04ee9de5-9296-4ed5-932f-1b6150435724"
+      }
+    },
+    "plugins": [
+      "expo-font"
+    ]
   }
 }

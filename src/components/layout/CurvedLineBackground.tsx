@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 
 interface CurvedLineBackgroundProps {
   variant?: 'default' | 'large' | 'small';
@@ -35,17 +36,50 @@ export const CurvedLineBackground: React.FC<CurvedLineBackgroundProps> = ({
     }
   };
 
+  const { width, height } = getDimensions();
+  const positionStyle = getPosition();
+
   const styles = StyleSheet.create({
-    curvedLine: {
+    container: {
       position: 'absolute',
-      ...getPosition(),
-      ...getDimensions(),
+      ...positionStyle,
+      width,
+      height,
+    },
+    curvedLine: {
+      width: '100%',
+      height: '100%',
       borderRadius: 150,
       borderWidth: 2,
       borderColor: 'rgba(0, 200, 255, 0.2)',
       borderStyle: 'solid',
+      overflow: 'hidden',
+    },
+    gradientBottom: {
+      position: 'absolute',
+      bottom: 0,
+      left: 0,
+      right: 0,
+      height: '50%', // Bottom half of the curve
+      borderBottomLeftRadius: 150,
+      borderBottomRightRadius: 150,
     },
   });
 
-  return <View style={styles.curvedLine} />;
+  return (
+    <View style={styles.container}>
+      <View style={styles.curvedLine}>
+        <LinearGradient
+          colors={[
+            'rgba(0, 0, 0, 0)',
+            'rgba(0, 0, 0, 0)',
+            'rgba(0, 0, 0, 0)',
+          ]}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 0, y: 1 }}
+          style={styles.gradientBottom}
+        />
+      </View>
+    </View>
+  );
 };

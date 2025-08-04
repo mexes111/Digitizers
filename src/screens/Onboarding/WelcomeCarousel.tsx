@@ -92,6 +92,7 @@ const CarouselSlide: React.FC<CarouselSlideProps> = ({ item, index, scrollX, wid
       textAlign: 'center',
       marginBottom: 16,
       letterSpacing: -0.5,
+      lineHeight: 35
     },
     subtitle: {
       fontSize: 13,

@@ -21,10 +21,10 @@ export default function CreativeCategorySelection({ navigation }: CreativeCatego
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
   const categories = [
-    { id: 'musicians', title: 'Musicians', icon: require('../../assets/microphone.png') },
-    { id: 'photographer', title: 'Photographer', icon: require('../../assets/camera.png') },
-    { id: 'model', title: 'Model', icon: require('../../assets/microphone.png')},
-    { id: 'stylist', title: 'Stylist', icon: require('../../assets/microphone.png') },
+    { id: 'musicians', title: 'Musicians', icon: require('../../assets/darkmic.png') },
+    { id: 'photographer', title: 'Photographer', icon: require('../../assets/darkmic.png') },
+    { id: 'model', title: 'Model', icon: require('../../assets/darkmic.png')},
+    { id: 'stylist', title: 'Stylist', icon: require('../../assets/darkmic.png') },
   ];
 
   const handleCategoryToggle = (categoryId: string) => {
@@ -115,13 +115,13 @@ export default function CreativeCategorySelection({ navigation }: CreativeCatego
       fontSize: 25,
       fontWeight: '700',
       color: '#FFFFFF',
-      marginBottom: 12,
-      lineHeight: 40,
+      marginBottom: 6,
+      // lineHeight: 40,
     },
     subHeaderText: {
       fontSize: 16,
       color: '#A8A8A8',
-      lineHeight: 20,
+      // lineHeight: 20,
     },
     categoriesContainer: {
       flexDirection: 'row',
@@ -153,7 +153,7 @@ export default function CreativeCategorySelection({ navigation }: CreativeCatego
       width: 48,
       height: 48,
       marginBottom: 16,
-      tintColor: '#FFFFFF',
+      // tintColor: '#FFFFFF',
     },
     categoryTitle: {
       fontSize: 16,
