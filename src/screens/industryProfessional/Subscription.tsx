@@ -20,6 +20,8 @@ export default function ProfSubscription() {
   const handleSubscribe = () => {
     // Handle subscription logic
     console.log('Subscribe to:', selectedPlan);
+    navigation.navigate('DiscoverScreen');
+    
     // Navigate to main app or success screen
   };
 
@@ -77,6 +79,7 @@ export default function ProfSubscription() {
       color: theme.colors.textSecondary,
       lineHeight: 20,
       marginBottom: theme.spacing.xl,
+      paddingRight: 100
     },
     pricingContainer: {
       marginBottom: theme.spacing.xl,
@@ -136,7 +139,8 @@ export default function ProfSubscription() {
                 Get discovered by top record labels & industry leaders.
               </Typography>
               <Typography style={styles.subHeaderText}>
-Premium visibility. Verified status. Advanced analytics. Get the exposure you deserve.              </Typography>
+                Advanced scouting tools. New talent discovered daily.
+             </Typography>
 
               <View style={styles.pricingContainer}>
                 <PricingCard
@@ -165,14 +169,7 @@ Premium visibility. Verified status. Advanced analytics. Get the exposure you de
               title={`Subscribe ${selectedPlan === 'annual' ? 'annually - $47.99' : 'monthly - $4.99'}`}
               onPress={handleSubscribe}
             />
-              <Gap size='sm' />
-          <PrimaryButton
-          style={styles.buttonLater}
-            title="I will do it later"
-            // onPress={handleContinue}
-          />
-            <Gap size="sm" />
-            
+              <Gap size='lg' />            
             <Typography style={styles.footerText}>
               Plan renews automatically.{'\n'}
               Cancel anytime before each renewal date.

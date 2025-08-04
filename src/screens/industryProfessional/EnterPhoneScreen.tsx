@@ -27,7 +27,7 @@ export const ProfEnterPhoneScreen: React.FC<ProfEnterPhoneScreenProps> = ({ navi
 
   const handleSendOTP = () => {
     if (phoneNumber.length >= 10) {
-      navigation.navigate('VerifyOTP', { 
+      navigation.navigate('CreatePasswordScreen', { 
         phoneNumber: selectedCountry.callingCode + phoneNumber 
       });
     }

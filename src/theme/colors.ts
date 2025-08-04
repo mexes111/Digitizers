@@ -2,6 +2,8 @@ export const colors = {
   light: {
     primary: '#007AFF',
     primaryDark: '#0056CC',
+    semiVeryDarkPrimary: '#1955a4',
+    veryDarkPrimary: "#0b2b54",
     secondary: '#34C759',
     background: '#FFFFFF',
     surface: '#F2F2F7',

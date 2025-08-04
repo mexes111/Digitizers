@@ -43,7 +43,7 @@ export default function ProfProfileSetup({ navigation }: ProfProfileSetupProps) 
 
   const handleContinue = () => {
     if (formData.fullName.trim()) {
-      (navigation || nav).navigate('StyleSelection');
+      (navigation || nav).navigate('CompanyInformationScreen');
     }
   };
 
@@ -206,10 +206,10 @@ export default function ProfProfileSetup({ navigation }: ProfProfileSetupProps) 
             </View>
 
             <Typography style={styles.headerText}>
-              Set up profile
+             Complete your profile
             </Typography>
             <Typography style={styles.subHeaderText}>
-              Enter details below for a personalized experience
+              Build trust with talent by completing your professional profile
             </Typography>
 
             <View style={styles.formContainer}>
@@ -230,6 +230,14 @@ export default function ProfProfileSetup({ navigation }: ProfProfileSetupProps) 
                     autoComplete="name"
                   />
                 </View>
+              </View>
+
+              <View style={styles.inputContainer}>
+                <LanguageSelector
+                  value={formData.languages}
+                  onSelect={(languages) => updateFormData('languages', languages)}
+                  placeholder="Job Title (E.g Senior A&R)"
+                />
               </View>
 
               <View style={styles.inputContainer}>
@@ -262,29 +270,7 @@ export default function ProfProfileSetup({ navigation }: ProfProfileSetupProps) 
                 </TouchableOpacity>
               </View>
 
-              <View style={styles.inputContainer}>
-                <LanguageSelector
-                  value={formData.languages}
-                  onSelect={(languages) => updateFormData('languages', languages)}
-                  placeholder="Select Languages you speak"
-                />
-              </View>
-
-              <View style={styles.inputContainer}>
-                <AgeSelector
-                  value={formData.age}
-                  onSelect={(age) => updateFormData('age', age)}
-                  placeholder="Age"
-                />
-              </View>
-
-              <View style={styles.inputContainer}>
-                <ExperienceSelector
-                  value={formData.experienceLevel}
-                  onSelect={(experience) => updateFormData('experienceLevel', experience)}
-                  placeholder="Experience Level"
-                />
-              </View>
+            
             </View>
           </View>
         </ScrollView>

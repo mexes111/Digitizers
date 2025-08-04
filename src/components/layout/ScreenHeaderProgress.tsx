@@ -1,27 +1,32 @@
 import React from 'react';
 import { View, TouchableOpacity, StyleSheet } from 'react-native';
 import { Typography } from '../typography/Typography';
+import { ProgressIndicator } from './ProgressIndicator';
 
-interface ScreenHeaderProps {
+interface ScreenHeaderProgressProps {
   title: string;
   subtitle?: string;
   onBackPress: () => void;
   showBackButton?: boolean;
+  currentStep: number;
+  totalSteps: number;
 }
 
-export const ScreenHeader: React.FC<ScreenHeaderProps> = ({
+export const ScreenHeaderProgress: React.FC<ScreenHeaderProgressProps> = ({
   title,
   subtitle,
   onBackPress,
   showBackButton = true,
+  currentStep,
+  totalSteps
 }) => {
   const styles = StyleSheet.create({
     container: {
       marginBottom: 10,
     },
     backButton: {
-      width: 35,
-      height: 35,
+      width: 44,
+      height: 44,
       borderRadius: 10,
       backgroundColor: 'rgba(255, 255, 255, 0.1)',
       justifyContent: 'center',
@@ -58,7 +63,7 @@ export const ScreenHeader: React.FC<ScreenHeaderProps> = ({
           <Typography style={styles.backButtonText}>‹</Typography>
         </TouchableOpacity>
       )}
-      
+      <ProgressIndicator currentStep={currentStep} totalSteps={totalSteps} />
       <View style={styles.headerContainer}>
         <Typography style={styles.headerText}>
           {title}
