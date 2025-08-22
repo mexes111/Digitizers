@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { Typography } from '../typography/Typography';
 
 interface DropdownFieldProps {
@@ -48,19 +48,21 @@ export const DropdownField: React.FC<DropdownFieldProps> = ({
       color: 'rgba(255, 255, 255, 0.5)',
       marginLeft: 12,
     },
+    icon:{height: 20, width: 20}
   });
 
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.inputWrapper} onPress={onPress}>
-        {icon || <View style={styles.inputIcon} />}
+        {/* {icon || <View style={styles.inputIcon} />} */}
         <Typography style={{
           ...styles.textInput,
           opacity: value ? 1 : 0.5
         }}>
           {value || placeholder}
         </Typography>
-        <Typography style={styles.dropdownIcon}>▼</Typography>
+        <Image source={require('../../assets/chevron-down.png')} style={styles.icon}/>
+        {/* <Typography style={styles.dropdownIcon}>▼</Typography> */}
       </TouchableOpacity>
     </View>
   );

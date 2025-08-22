@@ -26,9 +26,9 @@ export const CategoryButton: React.FC<CategoryButtonProps> = ({
       width: 60,
       height: 60,
       borderRadius: 30,
-      backgroundColor: isSelected ? '#007AFF' : 'rgba(255, 255, 255, 0.1)',
+      // backgroundColor: isSelected ? '#007AFF' : 'rgba(255, 255, 255, 0.1)',
       borderWidth: isSelected ? 0 : 1,
-      borderColor: 'rgba(255, 255, 255, 0.2)',
+      // borderColor: 'rgba(255, 255, 255, 0.2)',
       justifyContent: 'center',
       alignItems: 'center',
       marginBottom: 8,
@@ -47,7 +47,7 @@ export const CategoryButton: React.FC<CategoryButtonProps> = ({
   return (
     <TouchableOpacity style={[styles.container, style]} onPress={onPress}>
       <View style={styles.button}>
-        <Typography style={styles.iconText}>{icon || '👤'}</Typography>
+        {icon}
       </View>
       <Typography style={styles.title}>{title}</Typography>
     </TouchableOpacity>

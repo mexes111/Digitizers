@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { CurvedLineBackground } from '../../components/layout/CurvedLineBackground';
 import { BackButton } from '../../components/buttons/BackButton';
 import { PrimaryButton } from '../../components/buttons/PrimaryButton';
-import { Ionicons, MaterialIcons, Feather } from '@expo/vector-icons';
+// import { Ionicons, MaterialIcons, Feather } from '@expo/vector-icons';
 import CountryPicker, { Country, CountryCode } from 'react-native-country-picker-modal';
 import { LanguageSelector } from '../../components/inputs/LanguageSelector';
 import { AgeSelector } from '../../components/inputs/AgeSelector';
@@ -72,7 +72,7 @@ export default function ProfileSetup({ navigation }: ProfileSetupProps) {
       position: 'relative',
     },
     header: {
-      marginTop: 80,
+      marginTop: 20,
       paddingHorizontal: 24,
       zIndex: 10,
     },
@@ -147,6 +147,13 @@ export default function ProfileSetup({ navigation }: ProfileSetupProps) {
       alignItems: 'center',
       marginRight: 16,
     },
+     iconContainer1: {
+      width: 20,
+      height: 20,
+      justifyContent: 'center',
+      alignItems: 'center',
+      // marginRight: 16,
+    },
     textInput: {
       flex: 1,
       fontSize: 16,
@@ -156,7 +163,7 @@ export default function ProfileSetup({ navigation }: ProfileSetupProps) {
     termsContainer: {
       paddingHorizontal: 24,
       alignItems: 'center',
-      marginBottom: 40,
+      // marginBottom: 40,
     },
     termsText: {
       fontSize: 14,
@@ -219,6 +226,7 @@ export default function ProfileSetup({ navigation }: ProfileSetupProps) {
                   formData.fullName ? styles.inputWrapperFocused : null
                 ]}>
                   <View style={styles.iconContainer}>
+                    <Image source={require('../../assets/user.png')} style={{height: 20, width: 20}}/>
                   </View>
                   <TextInput
                     style={styles.textInput}
@@ -238,6 +246,7 @@ export default function ProfileSetup({ navigation }: ProfileSetupProps) {
                   onPress={() => setShowCountryPicker(true)}
                 >
                   <View style={styles.iconContainer}>
+                    <Image source={require('../../assets/NG.png')} style={{height: 20, width: 20}}/>
                   </View>
                   <View style={styles.countryPickerContainer}>
                     {selectedCountry && (
@@ -258,6 +267,7 @@ export default function ProfileSetup({ navigation }: ProfileSetupProps) {
                     }}>
                       {formData.country || 'Select Country'}
                     </Typography>
+                    <Image source={require('../../assets/chevron-down.png')} style={styles.iconContainer1} />
                   </View>
                 </TouchableOpacity>
               </View>
@@ -308,10 +318,10 @@ export default function ProfileSetup({ navigation }: ProfileSetupProps) {
           </Typography>
         </View>
 
-        <View style={styles.bottomIndicator} />
+        {/* <View style={styles.bottomIndicator} /> */}
       </View>
 
-      <CountryPicker
+      {/* <CountryPicker
         countryCode={'US'}
         withFilter
         withFlag
@@ -328,7 +338,7 @@ export default function ProfileSetup({ navigation }: ProfileSetupProps) {
           filterPlaceholderTextColor: `${theme.colors.textPrimary}80`,
           activeOpacity: 0.7,
         }}
-      />
+      /> */}
     </View>
   );
 }

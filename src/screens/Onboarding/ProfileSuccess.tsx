@@ -30,7 +30,7 @@ export default function ProfileSuccess() {
       position: 'relative',
     },
     header: {
-      marginTop: 80,
+      marginTop: 30,
       paddingHorizontal: 24,
       zIndex: 10,
     },
@@ -40,7 +40,7 @@ export default function ProfileSuccess() {
       alignItems: 'center',
       paddingHorizontal: 24,
       zIndex: 10,
-      marginTop: -100
+    //   marginTop: -50
     },
     emojiContainer: {
       marginBottom: theme.spacing.xl,
@@ -90,7 +90,7 @@ export default function ProfileSuccess() {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
       
       <View style={styles.backgroundContainer}>
-        <CurvedLineBackground  variant='large' position='topLeft'  />
+        <CurvedLineBackground  variant='default' position='topLeft'  />
         <CurvedLineBackground  />
         
         <View style={styles.header}>

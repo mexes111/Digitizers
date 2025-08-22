@@ -267,8 +267,10 @@ const handleUpload = () => {
 
   return (
     <ScreenContainer>
-      <Gap direction='vertical' size='xl' />
+      {/* <Gap direction='vertical' size='xl' /> */}
       <BackButton onPress={handleBack} />
+            <Gap direction='vertical' size='sm' />
+
       <ProgressIndicator currentStep={1} totalSteps={3} />
       <View style={styles.backgroundContainer}>
         

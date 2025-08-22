@@ -60,13 +60,13 @@ export default function UserTypeSelection({ navigation }: UserTypeSelectionProps
       paddingHorizontal: 20,
     },
     backButton: {
-      width: 40,
-      height: 40,
+      width: 34,
+      height: 34,
       backgroundColor: '#1C1C1E',
       borderRadius: 8,
       justifyContent: 'center',
       alignItems: 'center',
-      marginTop: 100,
+      marginTop: 50,
       marginBottom: 20,
     },
     content: {
@@ -120,31 +120,31 @@ export default function UserTypeSelection({ navigation }: UserTypeSelectionProps
       fontSize: 18,
       fontWeight: '600',
       color: '#FFFFFF',
-      marginBottom: 4,
+      marginBottom: 2,
     },
     optionDescription: {
-      fontSize: 14,
+      fontSize: 13,
       color: '#8E8E93',
-      lineHeight: 20,
+      lineHeight: 17,
     },
     radioButton: {
       width: 20,
       height: 20,
       borderRadius: 10,
       borderWidth: 2,
-      borderColor: '#38383A',
+      borderColor: 'rgba(255, 255, 255, 0.3)',
       marginLeft: 16,
+      justifyContent: 'center',
+      alignItems: 'center',
     },
     radioButtonSelected: {
       borderColor: '#007AFF',
-      backgroundColor: '#007AFF',
     },
     radioButtonInner: {
       width: 8,
       height: 8,
       borderRadius: 4,
-      backgroundColor: '#FFFFFF',
-      margin: 4,
+      backgroundColor: '#007AFF',
     },
     buttonContainer: {
       paddingBottom: 50,
@@ -171,7 +171,7 @@ export default function UserTypeSelection({ navigation }: UserTypeSelectionProps
         style={styles.backButton}
         onPress={() => navigation.goBack()}
       >
-        <Typography variant="body" style={{ color: '#FFFFFF', fontSize: 18 }}>←</Typography>
+        <Image resizeMode='contain' style={{height: 15, width: 15}} source={require('../../assets/Icon.png')} />
       </TouchableOpacity>
 
       <View style={styles.content}>
@@ -218,6 +218,7 @@ export default function UserTypeSelection({ navigation }: UserTypeSelectionProps
                     <View style={styles.radioButtonInner} />
                   )}
                 </View>
+                
               </TouchableOpacity>
             ))}
           </View>

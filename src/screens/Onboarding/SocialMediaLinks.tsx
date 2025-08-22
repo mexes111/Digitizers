@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, StatusBar, ScrollView } from 'react-native';
+import { View, StyleSheet, StatusBar, ScrollView, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useTheme } from '../../theme/ThemeProvider';
 import { Typography } from '../../components/typography/Typography';
@@ -9,7 +9,7 @@ import { SocialMediaInput } from '../../components/inputs/SocialMediaInput';
 import { ProgressBar } from '../../components/layout/ProgressBar';
 import { CurvedLineBackground } from '../../components/layout/CurvedLineBackground';
 import { Gap } from '../../components/layout/Gap';
-import { Ionicons } from '@expo/vector-icons';
+// import { Ionicons } from '@expo/vector-icons';
 
 interface SocialMediaData {
   instagram: string;
@@ -49,7 +49,7 @@ export default function SocialMediaLinks() {
       position: 'relative',
     },
     header: {
-      marginTop: 80,
+      marginTop: 35,
       paddingHorizontal: 24,
       zIndex: 10,
       flexDirection: 'row',
@@ -126,7 +126,7 @@ export default function SocialMediaLinks() {
             <View style={styles.formContainer}>
               <SocialMediaInput
                 platform="Instagram"
-                // icon={<Ionicons name="logo-instagram" size={24} color="#E4405F" />}
+                icon={<Image resizeMode='contain' source={require('../../assets/instagram.png')} style={{width: 20, height: 20}} />}
                 placeholder="Instagram username"
                 value={socialData.instagram}
                 onChangeText={(text) => updateSocialData('instagram', text)}
@@ -134,7 +134,7 @@ export default function SocialMediaLinks() {
 
               <SocialMediaInput
                 platform="YouTube"
-                // icon={<Ionicons name="logo-youtube" size={24} color="#FF0000" />}
+                icon={<Image resizeMode='contain' source={require('../../assets/youtube.png')} style={{width: 20, height: 20}} />}
                 placeholder="Youtube username"
                 value={socialData.youtube}
                 onChangeText={(text) => updateSocialData('youtube', text)}
@@ -142,7 +142,7 @@ export default function SocialMediaLinks() {
 
               <SocialMediaInput
                 platform="TikTok"
-                // icon={<Ionicons name="musical-notes" size={24} color="#000000" />}
+                icon={<Image resizeMode='contain' source={require('../../assets/tiktok.png')} style={{width: 20, height: 20}} />}
                 placeholder="Tiktok Username"
                 value={socialData.tiktok}
                 onChangeText={(text) => updateSocialData('tiktok', text)}
@@ -158,7 +158,7 @@ export default function SocialMediaLinks() {
           />
         </View>
 
-        <View style={styles.bottomIndicator} />
+        {/* <View style={styles.bottomIndicator} /> */}
       </View>
     </View>
   );

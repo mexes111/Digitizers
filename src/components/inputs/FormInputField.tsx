@@ -7,6 +7,7 @@ interface FormInputFieldProps extends TextInputProps {
   placeholder?: string;
   icon?: React.ReactNode;
   autoComplete?: string;
+  right: React.ReactNode
 }
 
 export const FormInputField: React.FC<FormInputFieldProps> = ({
@@ -15,6 +16,7 @@ export const FormInputField: React.FC<FormInputFieldProps> = ({
   placeholder,
   icon,
   autoComplete,
+  right,
   ...textInputProps
 }) => {
   const [isFocused, setIsFocused] = useState(false);
@@ -52,7 +54,7 @@ export const FormInputField: React.FC<FormInputFieldProps> = ({
   return (
     <View style={styles.container}>
       <View style={styles.inputWrapper}>
-        {icon || <View style={styles.inputIcon} />}
+        {right && right}
         <TextInput
           style={styles.textInput}
           placeholder={placeholder}
@@ -64,6 +66,7 @@ export const FormInputField: React.FC<FormInputFieldProps> = ({
           autoComplete={autoComplete}
           {...textInputProps}
         />
+         {icon || <View style={styles.inputIcon} />}
       </View>
     </View>
   );

@@ -219,8 +219,10 @@ export default function UploadWork({ navigation }: UploadWorkProps) {
 
   return (
     <ScreenContainer>
-      <Gap direction='vertical' size='xl'/>
+      {/* <Gap direction='vertical' size='xl'/> */}
      <BackButton onPress={handleBack}/>      
+           <Gap direction='vertical' size='sm'/>
+
      <ProgressIndicator currentStep={1} totalSteps={3} />
 
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
@@ -254,14 +256,14 @@ export default function UploadWork({ navigation }: UploadWorkProps) {
                   </Typography>
                 </View>
               </View>
-              <View style={[
+              {/* <View style={[
                 styles.addButton,
                 selectedOption === option.id && styles.addButtonSelected,
               ]}>
                 <Typography style={styles.addIcon}>
                   {selectedOption === option.id ? '✓' : '+'}
                 </Typography>
-              </View>
+              </View> */}
             </TouchableOpacity>
           ))}
         </View>

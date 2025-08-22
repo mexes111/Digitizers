@@ -156,8 +156,10 @@ export default function TellYourStory({ navigation }: TellYourStoryProps) {
     <ScreenContainer>
       
       <View style={styles.backgroundContainer}>
-        <Gap size='xl'/>
+        {/* <Gap size='xl'/> */}
         <BackButton onPress={handleBack} />
+                <Gap size='sm'/>
+
         <View style={styles.content}>
           <ProgressIndicator currentStep={2} totalSteps={3} />
           

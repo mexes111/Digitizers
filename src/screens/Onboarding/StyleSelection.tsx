@@ -4,6 +4,7 @@ import {
   StyleSheet, 
   TouchableOpacity,
   ScrollView,
+  Image,
 } from 'react-native';
 import { Typography } from '../../components/typography/Typography';
 import { useNavigation } from '@react-navigation/native';
@@ -97,7 +98,7 @@ export default function StyleSelection({ navigation }: StyleSelectionProps) {
           fontSize: 22,
           fontWeight: '700',
           color: '#FFFFFF',
-          marginBottom: 12,
+          // marginBottom: 12,
           // lineHeight: 40,
         }}>
           What's your style?
@@ -105,7 +106,7 @@ export default function StyleSelection({ navigation }: StyleSelectionProps) {
         <Typography style={{
           fontSize: 14,
           color: '#A8A8A8',
-          lineHeight: 24,
+          lineHeight: 20,
         }}>
           Help industry pros find your vibe (max {maxSelections}{'\n'}selections)
         </Typography>
@@ -124,9 +125,11 @@ export default function StyleSelection({ navigation }: StyleSelectionProps) {
               activeOpacity={0.8}
               disabled={!selectedStyles.includes(style) && selectedStyles.length >= maxSelections}
             >
+    
               <Typography style={styles.styleChipText}>{style}</Typography>
               {selectedStyles.includes(style) && (
-                <Typography style={[styles.styleChipText, { marginLeft: 8 }]}>✓</Typography>
+                <Image resizeMode='contain' source={require('../../assets/check-circle1.png')} style={{width: 14, height: 14, marginLeft: 4, marginTop: 3}} />
+                // <Typography style={[styles.styleChipText, { marginLeft: 8 }]}>✓</Typography>
               )}
             </TouchableOpacity>
           ))}

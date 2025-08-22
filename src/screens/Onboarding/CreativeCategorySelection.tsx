@@ -22,7 +22,7 @@ export default function CreativeCategorySelection({ navigation }: CreativeCatego
 
   const categories = [
     { id: 'musicians', title: 'Musicians', icon: require('../../assets/darkmic.png') },
-    { id: 'photographer', title: 'Photographer', icon: require('../../assets/darkmic.png') },
+    { id: 'photographer', title: 'Photographer', icon: require('../../assets/camera.png') },
     { id: 'model', title: 'Model', icon: require('../../assets/darkmic.png')},
     { id: 'stylist', title: 'Stylist', icon: require('../../assets/darkmic.png') },
   ];
@@ -66,13 +66,13 @@ export default function CreativeCategorySelection({ navigation }: CreativeCatego
     },
     content: {
       flex: 1,
-      paddingHorizontal: 32,
-      paddingTop: 60,
+      paddingHorizontal: 22,
+      paddingTop: 30,
       zIndex: 10,
     },
     backButton: {
-      width: 44,
-      height: 44,
+      width: 34,
+      height: 34,
       borderRadius: 10,
       backgroundColor: 'rgba(255, 255, 255, 0.1)',
       justifyContent: 'center',
@@ -80,9 +80,8 @@ export default function CreativeCategorySelection({ navigation }: CreativeCatego
       marginBottom: 40,
     },
     backButtonText: {
-      fontSize: 18,
-      color: '#FFFFFF',
-      fontWeight: '600',
+      height: 15,
+      width: 15
     },
     progressContainer: {
       flexDirection: 'row',
@@ -109,17 +108,17 @@ export default function CreativeCategorySelection({ navigation }: CreativeCatego
       fontWeight: '600',
     },
     headerContainer: {
-      marginBottom: 60,
+      marginBottom: 20,
     },
     headerText: {
       fontSize: 25,
       fontWeight: '700',
       color: '#FFFFFF',
-      marginBottom: 6,
+      marginBottom: 3,
       // lineHeight: 40,
     },
     subHeaderText: {
-      fontSize: 16,
+      fontSize: 14,
       color: '#A8A8A8',
       // lineHeight: 20,
     },
@@ -134,7 +133,7 @@ export default function CreativeCategorySelection({ navigation }: CreativeCatego
       aspectRatio: 1,
       backgroundColor: 'rgba(255, 255, 255, 0.05)',
       borderWidth: 2,
-      borderColor: 'rgba(255, 255, 255, 0.2)',
+      // borderColor: 'rgba(255, 255, 255, 0.2)',
       borderRadius: 20,
       justifyContent: 'center',
       alignItems: 'center',
@@ -202,7 +201,7 @@ export default function CreativeCategorySelection({ navigation }: CreativeCatego
         
         <View style={styles.content}>
           <TouchableOpacity style={styles.backButton} onPress={handleBack}>
-            <Typography style={styles.backButtonText}>‹</Typography>
+            <Image resizeMode='contain' style={styles.backButtonText} source={require('../../assets/Icon.png')}/>
           </TouchableOpacity>
           
           <ProgressIndicator currentStep={2} totalSteps={3} />

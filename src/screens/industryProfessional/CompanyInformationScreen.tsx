@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, ScrollView, Alert } from 'react-native';
+import { View, StyleSheet, ScrollView, Alert, Image } from 'react-native';
 import { Typography } from '../../components/typography/Typography';
 import { useNavigation } from '@react-navigation/native';
 import { ScreenContainer } from '../../components/layout/ScreenContainer';
@@ -87,6 +87,11 @@ export default function CompanyInformationScreen({ navigation }: CompanyInformat
   );
 
   const styles = StyleSheet.create({
+    icon: {
+      height: 20,
+      width: 20,
+      marginRight: 5
+    },
     progressContainer: {
       flexDirection: 'row',
       alignItems: 'center',
@@ -161,6 +166,7 @@ export default function CompanyInformationScreen({ navigation }: CompanyInformat
               onChangeText={setCompanyName}
               placeholder="Enter company name"
               autoComplete="organization"
+              icon={<View/>}
             />
           </View>
 
@@ -185,10 +191,11 @@ export default function CompanyInformationScreen({ navigation }: CompanyInformat
           <View style={styles.fieldContainer}>
             <Typography style={styles.fieldLabel}>Company Location</Typography>
             <FormInputField
+              right={<Image style={styles.icon} source={require('../../assets/location.png')} />}
               value={location}
               onChangeText={setLocation}
               placeholder="City, Country"
-              icon={<LocationIcon />}
+              icon={<View />}
               autoComplete="address-line1"
             />
           </View>

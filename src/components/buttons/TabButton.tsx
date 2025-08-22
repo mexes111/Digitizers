@@ -26,6 +26,7 @@ export const TabButton: React.FC<TabButtonProps> = ({
       fontSize: 16,
       fontWeight: '600',
       color: isActive ? '#007AFF' : 'rgba(255, 255, 255, 0.6)',
+      textAlign: 'center'
     },
   });
 

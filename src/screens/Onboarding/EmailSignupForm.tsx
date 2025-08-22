@@ -4,6 +4,7 @@ import {
   StyleSheet, 
   TouchableOpacity, 
   TextInput,
+  Image,
 } from 'react-native';
 import { Typography } from '../../components/typography/Typography';
 import { useNavigation } from '@react-navigation/native';
@@ -53,9 +54,10 @@ export default function EmailSignupForm({ navigation }: EmailSignupFormProps) {
       backgroundColor: 'rgba(0, 122, 255, 0.1)',
     },
     emailIcon: {
-      fontSize: 25,
       color: '#A8A8A8',
       marginRight: 12,
+      height: 18,
+      width: 18
     },
     emailInput: {
       flex: 1,
@@ -87,7 +89,7 @@ export default function EmailSignupForm({ navigation }: EmailSignupFormProps) {
         styles.emailInputContainer,
         isFocused && styles.emailInputContainerFocused
       ]}>
-        <Typography style={styles.emailIcon}>✉</Typography>
+        <Image source={require('../../assets/mail.png')} style={styles.emailIcon} />
         <TextInput
           style={styles.emailInput}
           value={email}

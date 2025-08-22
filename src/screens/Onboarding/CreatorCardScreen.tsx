@@ -42,7 +42,7 @@ export default function CreatorCardScreen() {
       position: 'relative',
     },
     header: {
-      marginTop: 80,
+      marginTop: 40,
       paddingHorizontal: 24,
       zIndex: 10,
     },
@@ -73,7 +73,7 @@ export default function CreatorCardScreen() {
     actionButtonsContainer: {
       flexDirection: 'row',
       gap: theme.spacing.md,
-      marginBottom: 170,
+      marginBottom: 50,
     },
     actionButton: {
       flex: 1,

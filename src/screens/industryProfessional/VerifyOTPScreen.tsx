@@ -3,6 +3,8 @@ import { View, TextInput, TouchableOpacity, StyleSheet, StatusBar } from 'react-
 import { Typography } from '../../components/typography/Typography';
 import { PrimaryButton } from '../../components/buttons/PrimaryButton';
 import { CurvedLineBackground } from '../../components/layout/CurvedLineBackground';
+import { BackButton } from '../../components/buttons';
+import { Gap } from '../../components/layout';
 
 interface ProfVerifyOTPScreenProps {
   navigation: any;
@@ -136,13 +138,14 @@ export const ProfVerifyOTPScreen: React.FC<ProfVerifyOTPScreenProps> = ({ naviga
       {/* Decorative background */}
       <CurvedLineBackground/>
       
-      <TouchableOpacity 
+      {/* <TouchableOpacity 
         style={styles.backButton}
         onPress={() => navigation.goBack()}
       >
         <Typography variant="body" style={{ color: '#FFFFFF', fontSize: 18 }}>←</Typography>
-      </TouchableOpacity>
-
+      </TouchableOpacity> */}
+      <Gap size='xxl'/>
+      <BackButton onPress={() => navigation.goBack()}/>
       <View style={styles.content}>
         <View style={styles.headerSection}>
           <Typography style={styles.title}>

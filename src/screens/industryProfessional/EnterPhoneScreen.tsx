@@ -4,6 +4,8 @@ import { Typography } from '../../components/typography/Typography';
 import { PrimaryButton } from '../../components/buttons/PrimaryButton';
 import { SimpleCountryPicker } from '../../components/inputs/SimpleCountryPicker';
 import { CurvedLineBackground } from '../../components/layout/CurvedLineBackground';
+import { Gap } from '../../components/layout';
+import { BackButton } from '../../components/buttons';
 
 interface ProfEnterPhoneScreenProps {
   navigation: any;
@@ -130,12 +132,14 @@ export const ProfEnterPhoneScreen: React.FC<ProfEnterPhoneScreenProps> = ({ navi
       {/* Decorative background */}
       <CurvedLineBackground />
       
-      <TouchableOpacity 
+      {/* <TouchableOpacity 
         style={styles.backButton}
         onPress={() => navigation.goBack()}
       >
         <Typography variant="body" style={{ color: '#FFFFFF', fontSize: 18 }}>←</Typography>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
+      <Gap size='xxl'/>
+      <BackButton onPress={() => navigation.goBack()}/>
 
       <View style={styles.content}>
         <View style={styles.headerSection}>

@@ -38,8 +38,8 @@ export const ScreenContainer: React.FC<ScreenContainerProps> = ({
     },
     content: {
       flex: 1,
-      paddingHorizontal: 32,
-      paddingTop: 60,
+      paddingHorizontal: 22,
+      paddingTop: 30,
       zIndex: 10,
     },
   });

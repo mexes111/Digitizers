@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   StatusBar,
+  Image,
 } from 'react-native';
 import Animated, {
   useSharedValue,
@@ -29,7 +30,7 @@ const slides = [
     key: 'slide2',
     title: 'Connect with Industry Pros',
     subtitle: 'Network with A&Rs, record labels, brands,\nand creative agencies',
-    image: require('../../assets/thumbnail2.png'),
+    image: require('../../assets/imageslide2.png'),
   },
   {
     key: 'slide3',
@@ -83,14 +84,14 @@ const CarouselSlide: React.FC<CarouselSlideProps> = ({ item, index, scrollX, wid
     textContainer: {
       alignItems: 'center',
       paddingHorizontal: 20,
-      marginBottom: 60,
+      marginBottom: 0,
     },
     title: {
       fontSize: 24,
       fontWeight: '800',
       color: '#FFFFFF',
       textAlign: 'center',
-      marginBottom: 16,
+      marginBottom: 6,
       letterSpacing: -0.5,
       lineHeight: 35
     },
@@ -98,7 +99,7 @@ const CarouselSlide: React.FC<CarouselSlideProps> = ({ item, index, scrollX, wid
       fontSize: 13,
       color: '#A8A8A8',
       textAlign: 'center',
-      lineHeight: 26,
+      lineHeight: 18,
       fontWeight: '400',
     },
   });
@@ -183,7 +184,7 @@ export default function WelcomeCarousel({ navigation }: WelcomeCarouselProps) {
     return {
       backgroundColor: isLastSlide ? '#00D4AA' : '#007AFF',
       width: 280,
-      height: 64,
+      height: 52,
       borderRadius: 32,
       justifyContent: 'center' as const,
       alignItems: 'center' as const,
@@ -204,13 +205,14 @@ export default function WelcomeCarousel({ navigation }: WelcomeCarouselProps) {
     if (isLastSlide) {
       return (
         <View style={styles.checkmarkContainer}>
-          <Typography style={styles.checkmark}>✓</Typography>
+          <Image source={require('../../assets/check-circle.png')} style={styles.checkmark} />
+          {/* <Typography style={styles.checkmark}>✓</Typography> */}
         </View>
       );
     }
     return (
       <View style={styles.arrowContainer}>
-        <Typography style={styles.arrow}>→</Typography>
+          <Image source={require('../../assets/iconForward.png')} style={styles.checkmark} />
       </View>
     );
   };
@@ -230,20 +232,20 @@ export default function WelcomeCarousel({ navigation }: WelcomeCarouselProps) {
       width: 32,
       height: 32,
       borderRadius: 16,
-      backgroundColor: 'rgba(255, 255, 255, 0.2)',
+      // backgroundColor: 'rgba(255, 255, 255, 0.2)',
       justifyContent: 'center',
       alignItems: 'center',
     },
     checkmark: {
-      fontSize: 18,
       color: '#FFFFFF',
-      fontWeight: '700',
+      width: 24,
+      height: 24,
     },
     arrowContainer: {
-      width: 32,
+      width: 33,
       height: 32,
       borderRadius: 16,
-      backgroundColor: 'rgba(255, 255, 255, 0.2)',
+      // backgroundColor: 'rgba(255, 255, 255, 0.2)',
       justifyContent: 'center',
       alignItems: 'center',
     },

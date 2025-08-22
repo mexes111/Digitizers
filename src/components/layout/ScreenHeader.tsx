@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { Typography } from '../typography/Typography';
 
 interface ScreenHeaderProps {
@@ -20,19 +20,18 @@ export const ScreenHeader: React.FC<ScreenHeaderProps> = ({
       marginBottom: 10,
     },
     backButton: {
-      width: 35,
-      height: 35,
+      width: 34,
+      height: 34,
       borderRadius: 10,
       backgroundColor: 'rgba(255, 255, 255, 0.1)',
       justifyContent: 'center',
       alignItems: 'center',
-      marginBottom: 30,
-      marginTop: 40
+      marginBottom: 50,
+      marginTop: -10
     },
-    backButtonText: {
-      fontSize: 18,
-      color: '#FFFFFF',
-      fontWeight: '600',
+      backButtonText: {
+     height: 15,
+     width: 15
     },
     headerContainer: {
       marginBottom: subtitle ? 0 : 20,
@@ -55,7 +54,7 @@ export const ScreenHeader: React.FC<ScreenHeaderProps> = ({
     <View style={styles.container}>
       {showBackButton && (
         <TouchableOpacity style={styles.backButton} onPress={onBackPress}>
-          <Typography style={styles.backButtonText}>‹</Typography>
+          <Image resizeMode='contain' style={styles.backButtonText} source={require('../../assets/Icon.png')} />
         </TouchableOpacity>
       )}
       

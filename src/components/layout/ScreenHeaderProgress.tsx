@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { Typography } from '../typography/Typography';
 import { ProgressIndicator } from './ProgressIndicator';
 
@@ -25,19 +25,18 @@ export const ScreenHeaderProgress: React.FC<ScreenHeaderProgressProps> = ({
       marginBottom: 10,
     },
     backButton: {
-      width: 44,
-      height: 44,
+      width: 34,
+      height: 34,
       borderRadius: 10,
       backgroundColor: 'rgba(255, 255, 255, 0.1)',
       justifyContent: 'center',
       alignItems: 'center',
       marginBottom: 30,
-      marginTop: 40
+      // marginTop: 40
     },
     backButtonText: {
-      fontSize: 18,
-      color: '#FFFFFF',
-      fontWeight: '600',
+     height: 15,
+     width: 15
     },
     headerContainer: {
       marginBottom: subtitle ? 0 : 20,
@@ -60,7 +59,7 @@ export const ScreenHeaderProgress: React.FC<ScreenHeaderProgressProps> = ({
     <View style={styles.container}>
       {showBackButton && (
         <TouchableOpacity style={styles.backButton} onPress={onBackPress}>
-          <Typography style={styles.backButtonText}>‹</Typography>
+          <Image resizeMode='contain' style={styles.backButtonText} source={require('../../assets/Icon.png')} />
         </TouchableOpacity>
       )}
       <ProgressIndicator currentStep={currentStep} totalSteps={totalSteps} />

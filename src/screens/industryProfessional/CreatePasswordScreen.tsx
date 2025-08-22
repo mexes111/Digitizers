@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { Typography } from '../../components/typography/Typography';
 import { useNavigation } from '@react-navigation/native';
 import { ScreenContainer } from '../../components/layout/ScreenContainer';
 import { ScreenHeader } from '../../components/layout/ScreenHeader';
 import { PrimaryButton } from '../../components/buttons/PrimaryButton';
 import { FormInputField } from '../../components/inputs/FormInputField';
+import { KeyboardAwareContainer } from '../../components/layout/KeyboardAwareContainer';
 
 interface CreatePasswordScreenProps {
   navigation?: any;
@@ -54,9 +55,10 @@ export default function CreatePasswordScreen({ navigation }: CreatePasswordScree
 
   const EyeIcon = ({ onPress, show }: { onPress: () => void; show: boolean }) => (
     <TouchableOpacity onPress={onPress} style={styles.eyeIcon}>
-      <Typography style={styles.eyeIconText}>
+      {/* <Typography style={styles.eyeIconText}>
         {show ? '👁️' : '👁️‍🗨️'}
-      </Typography>
+      </Typography> */}
+      <Image source={require('../../assets/eye.png')} style={styles.eyeIconText}/>
     </TouchableOpacity>
   );
 
@@ -105,8 +107,8 @@ export default function CreatePasswordScreen({ navigation }: CreatePasswordScree
       paddingRight: 8
     },
     eyeIconText: {
-      fontSize: 18,
-      color: 'rgba(255, 255, 255, 0.6)',
+      width: 20, 
+      height: 20 
     },
     buttonContainer: {
       marginTop: 'auto',
@@ -115,16 +117,13 @@ export default function CreatePasswordScreen({ navigation }: CreatePasswordScree
   });
 
   return (
-    <ScreenContainer 
-      keyboardAvoiding={true} 
-      dismissKeyboardOnTap={true}
-      showCurvedLine={true}
-    >
-      <ScreenHeader
-        title="Create your password"
-        subtitle="Enter an 8-character password to help secure your account"
-        onBackPress={handleBack}
-      />
+    <ScreenContainer>
+      <KeyboardAwareContainer behavior="padding">
+        <ScreenHeader
+          title="Create Password"
+          subtitle="Choose a strong password for your account"
+          onBackPress={handleBack}
+        />
 
       <FormInputField
         value={password}
@@ -158,6 +157,7 @@ export default function CreatePasswordScreen({ navigation }: CreatePasswordScree
           disabled={!isFormValid()}
         />
       </View>
+    </KeyboardAwareContainer>
     </ScreenContainer>
   );
 }

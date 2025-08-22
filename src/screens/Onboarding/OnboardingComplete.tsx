@@ -30,7 +30,7 @@ export default function OnboardingComplete() {
       position: 'relative',
     },
     header: {
-      marginTop: 80,
+      marginTop: 40,
       paddingHorizontal: 24,
       zIndex: 10,
     },

@@ -13,12 +13,18 @@ interface DiscoverScreenProps {
   navigation?: any;
 }
 
+const styles = StyleSheet.create({
+  icon: {
+      height: 50, width: 50
+  }
+})
+
 const categories = [
-  { id: '1', title: 'Musicians', icon: '🎵', isSelected: true },
-  { id: '2', title: 'Models', icon: '👤', isSelected: false },
-  { id: '3', title: 'Stylists', icon: '✂️', isSelected: false },
-  { id: '4', title: 'Photographers', icon: '📸', isSelected: false },
-  { id: '5', title: 'Stylists', icon: '🎨', isSelected: false },
+  { id: '1', title: 'Musicians', icon: <Image style={styles.icon} source={require('../../assets/tag1.png')} />, isSelected: true },
+  { id: '2', title: 'Models', icon: <Image style={styles.icon} source={require('../../assets/tag2.png')} />, isSelected: false },
+  { id: '3', title: 'Stylists', icon: <Image style={styles.icon} source={require('../../assets/tag3.png')} />, isSelected: false },
+  { id: '4', title: 'Photographers', icon: <Image style={styles.icon} source={require('../../assets/tag4.png')} />, isSelected: false },
+  { id: '5', title: 'Stylists', icon: <Image style={styles.icon} source={require('../../assets/tag1.png')} />, isSelected: false },
 ];
 
 const contentData = [
@@ -29,6 +35,7 @@ const contentData = [
     location: 'Musician • Lagos, Nigeria',
     views: '1200',
     likes: '1200',
+    imageUrl: require('../../assets/Image.png')
   },
   {
     id: '2',
@@ -37,6 +44,7 @@ const contentData = [
     location: 'Musician • Lagos, Nigeria',
     views: '1200',
     likes: '1200',
+    imageUrl: require('../../assets/Image.png')
   },
 ];
 
@@ -68,10 +76,10 @@ export default function DiscoverScreen({ navigation }: DiscoverScreenProps) {
     },
     header: {
       paddingBottom: 20,
-      paddingTop: 10
+      marginTop: -40
     },
     title: {
-      fontSize: 32,
+      fontSize: 24,
       fontWeight: 'bold',
       color: '#FFFFFF',
       lineHeight: 30
@@ -102,6 +110,9 @@ export default function DiscoverScreen({ navigation }: DiscoverScreenProps) {
       marginBottom: 20,
       borderBottomWidth: 1,
       borderBottomColor: 'rgba(255, 255, 255, 0.1)',
+      alignSelf: 'center',
+      justifyContent: 'center',
+      alignItems: 'center'
     },
     contentContainer: {
       flex: 1,
@@ -164,11 +175,13 @@ export default function DiscoverScreen({ navigation }: DiscoverScreenProps) {
         {/* Tabs */}
         <View style={styles.tabsContainer}>
           <TabButton
+          style={{width: '50%'}}
             title="Trending Now"
             isActive={activeTab === 'trending'}
             onPress={() => handleTabPress('trending')}
           />
           <TabButton
+            style={{width: '50%'}}
             title="Recent Uploads"
             isActive={activeTab === 'recent'}
             onPress={() => handleTabPress('recent')}
@@ -179,6 +192,7 @@ export default function DiscoverScreen({ navigation }: DiscoverScreenProps) {
         <ScrollView style={styles.contentContainer} showsVerticalScrollIndicator={false}>
           {contentData.map((item) => (
             <ContentCard
+              imageUrl={item.imageUrl}
               key={item.id}
               title={item.title}
               author={item.author}

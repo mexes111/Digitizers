@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { View, TextInput, TouchableOpacity, StyleSheet, StatusBar } from 'react-native';
+import { View, TextInput, TouchableOpacity, StyleSheet, StatusBar, Image } from 'react-native';
 import { Typography } from '../../components/typography/Typography';
 import { PrimaryButton } from '../../components/buttons/PrimaryButton';
 import { CurvedLineBackground } from '../../components/layout/CurvedLineBackground';
@@ -50,13 +50,13 @@ export const VerifyOTPScreen: React.FC<VerifyOTPScreenProps> = ({ navigation, ro
       paddingHorizontal: 20,
     },
     backButton: {
-      width: 40,
-      height: 40,
+      width: 34,
+      height: 34,
       backgroundColor: '#1C1C1E',
       borderRadius: 8,
       justifyContent: 'center',
       alignItems: 'center',
-      marginTop: 100,
+      marginTop: 30,
       marginBottom: 40,
     },
     content: {
@@ -140,7 +140,7 @@ export const VerifyOTPScreen: React.FC<VerifyOTPScreenProps> = ({ navigation, ro
         style={styles.backButton}
         onPress={() => navigation.goBack()}
       >
-        <Typography variant="body" style={{ color: '#FFFFFF', fontSize: 18 }}>←</Typography>
+        <Image resizeMode='contain' style={{height: 15, width: 15}} source={require('../../assets/Icon.png')} />
       </TouchableOpacity>
 
       <View style={styles.content}>

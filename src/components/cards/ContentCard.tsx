@@ -2,6 +2,7 @@ import React from 'react';
 import { View, StyleSheet, Image, TouchableOpacity, ViewStyle } from 'react-native';
 import { Typography } from '../typography/Typography';
 import { useTheme } from '../../theme/ThemeProvider';
+import { Divider } from '../layout';
 
 interface ContentCardProps {
   title: string;
@@ -32,6 +33,7 @@ export const ContentCard: React.FC<ContentCardProps> = ({
       borderRadius: 16,
       overflow: 'hidden',
       marginBottom: 16,
+      padding: 14
     },
     imageContainer: {
       width: '100%',
@@ -44,6 +46,7 @@ export const ContentCard: React.FC<ContentCardProps> = ({
       width: '100%',
       height: '100%',
       resizeMode: 'cover',
+      borderRadius: 10
     },
     imagePlaceholder: {
       width: '100%',
@@ -53,7 +56,7 @@ export const ContentCard: React.FC<ContentCardProps> = ({
       alignItems: 'center',
     },
     content: {
-      padding: 16,
+      // padding: 16,
     },
     header: {
       flexDirection: 'row',
@@ -85,12 +88,14 @@ export const ContentCard: React.FC<ContentCardProps> = ({
     title: {
       fontSize: 14,
       color: 'rgba(255, 255, 255, 0.9)',
-      lineHeight: 20,
+      // lineHeight: 20,
       marginBottom: 12,
+      paddingTop: 10
     },
     stats: {
       flexDirection: 'row',
       alignItems: 'center',
+      marginTop: 5
     },
     statItem: {
       flexDirection: 'row',
@@ -106,38 +111,48 @@ export const ContentCard: React.FC<ContentCardProps> = ({
       fontSize: 12,
       color: 'rgba(255, 255, 255, 0.7)',
     },
+    icon: {
+      height: 40,
+      width: 40,
+      marginRight: 8
+    }
   });
 
   return (
     <TouchableOpacity style={[styles.container, style]} onPress={onPress}>
+      <View style={styles.header}>
+        <View style={{flexDirection: 'row'}}>
+          <Image style={styles.icon} source={require('../../assets/Avatar.png')}/>
+          <View style={styles.authorInfo}>
+            <Typography style={styles.authorName}>{author}</Typography>
+            <Typography style={styles.location}>{location}</Typography>
+          </View>
+        </View>
+      
+        <TouchableOpacity style={styles.moreButton}>
+          <Typography style={styles.moreText}>⋯</Typography>
+        </TouchableOpacity>
+      </View>
       <View style={styles.imageContainer}>
         {imageUrl ? (
-          <Image source={{ uri: imageUrl }} style={styles.image} />
+          <Image source={imageUrl} style={styles.image} />
         ) : (
           <View style={styles.imagePlaceholder} />
         )}
       </View>
       
       <View style={styles.content}>
-        <View style={styles.header}>
-          <View style={styles.authorInfo}>
-            <Typography style={styles.authorName}>{author}</Typography>
-            <Typography style={styles.location}>{location}</Typography>
-          </View>
-          <TouchableOpacity style={styles.moreButton}>
-            <Typography style={styles.moreText}>⋯</Typography>
-          </TouchableOpacity>
-        </View>
+    
         
         <Typography style={styles.title}>{title}</Typography>
-        
+        <Divider style={{marginTop: -1}}/>
         <View style={styles.stats}>
           <View style={styles.statItem}>
-            <View style={[styles.statIcon, { backgroundColor: 'rgba(255, 255, 255, 0.3)', borderRadius: 8 }]} />
+            <Image style={styles.statIcon} source={require('../../assets/eye.png')} style={styles.statIcon} />
             <Typography style={styles.statText}>{views} Views</Typography>
           </View>
           <View style={styles.statItem}>
-            <View style={[styles.statIcon, { backgroundColor: 'rgba(255, 255, 255, 0.3)', borderRadius: 8 }]} />
+            <Image style={styles.statIcon} source={require('../../assets/eye.png')} style={styles.statIcon} />
             <Typography style={styles.statText}>{likes} Views</Typography>
           </View>
         </View>

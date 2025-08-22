@@ -52,7 +52,7 @@ export default function BuildPortfolio({ navigation }: BuildPortfolioProps) {
     content: {
       flex: 1,
       // paddingHorizontal: 32,
-      paddingTop: 60,
+      // paddingTop: 20,
       zIndex: 10,
     },
     backButton: {
@@ -120,10 +120,7 @@ export default function BuildPortfolio({ navigation }: BuildPortfolioProps) {
       marginBottom: 16,
     },
     checkIcon: {
-      fontSize: 20,
-      color: '#00C851',
-      marginRight: 16,
-      width: 24,
+     height: 24, width: 24,marginRight: 10,
       textAlign: 'center',
     },
     featureText: {
@@ -193,19 +190,20 @@ export default function BuildPortfolio({ navigation }: BuildPortfolioProps) {
 
           <View style={styles.featuresContainer}>
             <View style={styles.featureItem}>
-              <Typography style={styles.checkIcon}>✓</Typography>
+              <Image resizeMode='contain' style={styles.checkIcon} source={require('../../assets/check-circle1.png')} />
               <Typography style={styles.featureText}>
                 Showcase your visual work
               </Typography>
             </View>
             <View style={styles.featureItem}>
-              <Typography style={styles.checkIcon}>✓</Typography>
+              <Image resizeMode='contain' style={styles.checkIcon} source={require('../../assets/check-circle1.png')} />
               <Typography style={styles.featureText}>
                 Upload your music tracks
               </Typography>
             </View>
             <View style={styles.featureItem}>
-              <Typography style={styles.checkIcon}>✓</Typography>
+              <Image resizeMode='contain' style={styles.checkIcon} source={require('../../assets/check-circle1.png')} />
+              {/* <Typography style={styles.checkIcon}>✓</Typography> */}
               <Typography style={styles.featureText}>
                 Share your video content
               </Typography>

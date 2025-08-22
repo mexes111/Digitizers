@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Modal, TouchableOpacity, FlatList, StyleSheet } from 'react-native';
+import { View, Modal, TouchableOpacity, FlatList, StyleSheet, Image } from 'react-native';
 import { Typography } from '../typography/Typography';
 
 interface ExperienceSelectorProps {
@@ -30,13 +30,14 @@ export const ExperienceSelector: React.FC<ExperienceSelectorProps> = ({
   return (
     <View>
       <TouchableOpacity style={styles.inputWrapper} onPress={() => setIsVisible(true)}>
-        <View style={styles.iconContainer} />
+        {/* <View style={styles.iconContainer} /> */}
         <Typography style={{
           ...styles.textInput,
           opacity: value ? 1 : 0.5
         }}>
           {value || placeholder}
         </Typography>
+        <Image source={require('../../assets/chevron-down.png')} style={styles.iconContainer} />
       </TouchableOpacity>
 
       <Modal visible={isVisible} animationType="slide" transparent>
@@ -86,7 +87,7 @@ const styles = StyleSheet.create({
   iconContainer: {
     width: 20,
     height: 20,
-    marginRight: 16,
+    // marginRight: 16,
   },
   textInput: {
     flex: 1,

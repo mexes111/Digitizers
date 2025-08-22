@@ -65,20 +65,20 @@ export default function RegistrationOptions({ navigation }: RegistrationOptionsP
       fontWeight: '700',
       color: '#FFFFFF',
       marginBottom: 3,
-      lineHeight: 40,
+      // lineHeight: 40,
     },
     subHeaderText: {
-      fontSize: 14,
+      fontSize: 13,
       color: '#A8A8A8',
-      marginBottom: 25,
-      lineHeight: 24,
+      marginBottom: 15,
+      lineHeight: 17,
     },
     buttonContainer: {
-      marginBottom: 24,
+      // marginBottom: 24,
     },
     primaryButton: {
       backgroundColor: '#007AFF',
-      height: 56,
+      height: 50,
       borderRadius: 28,
       justifyContent: 'center',
       alignItems: 'center',
@@ -100,7 +100,7 @@ export default function RegistrationOptions({ navigation }: RegistrationOptionsP
     dividerContainer: {
       flexDirection: 'row',
       alignItems: 'center',
-      marginVertical: 20,
+      marginVertical: 10,
     },
     dividerLine: {
       flex: 1,
@@ -113,7 +113,7 @@ export default function RegistrationOptions({ navigation }: RegistrationOptionsP
       marginHorizontal: 16,
     },
     socialButton: {
-      height: 56,
+      height: 50,
       borderRadius: 28,
       backgroundColor: 'rgba(255, 255, 255, 0.08)',
       borderWidth: 1,
@@ -128,7 +128,7 @@ export default function RegistrationOptions({ navigation }: RegistrationOptionsP
       alignItems: 'center',
     },
     socialButtonText: {
-      fontSize: 16,
+      fontSize: 14,
       fontWeight: '500',
       color: '#FFFFFF',
       marginRight: 12,

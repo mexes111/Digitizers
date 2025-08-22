@@ -34,7 +34,7 @@ export default function Subscription() {
     },
     backgroundImage: {
       flex: 1,
-      opacity: 0.7, // Makes the background transparent
+      // opacity: 0.7, // Makes the background transparent
     },
     backgroundContainer: {
       flex: 1,
@@ -43,10 +43,10 @@ export default function Subscription() {
     overlay: {
       ...StyleSheet.absoluteFillObject,
       backgroundColor: theme.colors.background,
-      opacity: 0.85, // Additional overlay for better text readability
+      // opacity: 0.85, // Additional overlay for better text readability
     },
     header: {
-      marginTop: 80,
+      marginTop: 30,
       paddingHorizontal: 24,
       zIndex: 10,
       flexDirection: 'row',
@@ -118,11 +118,11 @@ export default function Subscription() {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
       <CurvedLineBackground/>
       <ImageBackground
-        source={require('../../assets/thumbnail2.png')}
+        source={require('../../assets/background.png')}
         style={styles.backgroundImage}
         resizeMode="cover"
       >
-        <View style={styles.overlay} />
+        {/* <View style={styles.overlay} /> */}
         
         <View style={styles.backgroundContainer}>
           <View style={styles.header}>
@@ -179,7 +179,7 @@ Premium visibility. Verified status. Advanced analytics. Get the exposure you de
             </Typography>
           </View>
 
-          <View style={styles.bottomIndicator} />
+          {/* <View style={styles.bottomIndicator} /> */}
         </View>
       </ImageBackground>
     </View>

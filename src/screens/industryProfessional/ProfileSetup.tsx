@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { CurvedLineBackground } from '../../components/layout/CurvedLineBackground';
 import { BackButton } from '../../components/buttons/BackButton';
 import { PrimaryButton } from '../../components/buttons/PrimaryButton';
-import { Ionicons, MaterialIcons, Feather } from '@expo/vector-icons';
+// import { Ionicons, MaterialIcons, Feather } from '@expo/vector-icons';
 import CountryPicker, { Country, CountryCode } from 'react-native-country-picker-modal';
 import { LanguageSelector } from '../../components/inputs/LanguageSelector';
 import { AgeSelector } from '../../components/inputs/AgeSelector';
@@ -63,6 +63,7 @@ export default function ProfProfileSetup({ navigation }: ProfProfileSetupProps) 
   };
 
   const styles = StyleSheet.create({
+    icon: {height: 20, width: 20},
     container: {
       flex: 1,
       backgroundColor: theme.colors.background,
@@ -72,7 +73,7 @@ export default function ProfProfileSetup({ navigation }: ProfProfileSetupProps) 
       position: 'relative',
     },
     header: {
-      marginTop: 80,
+      marginTop: 40,
       paddingHorizontal: 24,
       zIndex: 10,
     },
@@ -81,7 +82,7 @@ export default function ProfProfileSetup({ navigation }: ProfProfileSetupProps) 
       zIndex: 10,
     },
     content: {
-      paddingHorizontal: 24,
+      paddingHorizontal: 14,
     },
     profileImageContainer: {
       marginBottom: 10,
@@ -219,6 +220,7 @@ export default function ProfProfileSetup({ navigation }: ProfProfileSetupProps) 
                   formData.fullName ? styles.inputWrapperFocused : null
                 ]}>
                   <View style={styles.iconContainer}>
+                    <Image style={{height: 20, width: 20}} source={require('../../assets/user.png')}/>
                   </View>
                   <TextInput
                     style={styles.textInput}
@@ -246,6 +248,7 @@ export default function ProfProfileSetup({ navigation }: ProfProfileSetupProps) 
                   onPress={() => setShowCountryPicker(true)}
                 >
                   <View style={styles.iconContainer}>
+                    <Image style={styles.icon} source={require('../../assets/NG.png')}/>
                   </View>
                   <View style={styles.countryPickerContainer}>
                     {selectedCountry && (
@@ -266,6 +269,7 @@ export default function ProfProfileSetup({ navigation }: ProfProfileSetupProps) 
                     }}>
                       {formData.country || 'Select Country'}
                     </Typography>
+                    <Image style={styles.icon} source={require('../../assets/chevron-down.png')}/>
                   </View>
                 </TouchableOpacity>
               </View>
@@ -294,7 +298,7 @@ export default function ProfProfileSetup({ navigation }: ProfProfileSetupProps) 
           </Typography>
         </View>
 
-        <View style={styles.bottomIndicator} />
+        {/* <View style={styles.bottomIndicator} /> */}
       </View>
 
       <CountryPicker
