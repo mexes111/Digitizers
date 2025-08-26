@@ -1,4 +1,4 @@
-package com.matthewbarnabasc.digitizersapp
+package com.org.digitizersapp
 
 import android.os.Build
 import android.os.Bundle

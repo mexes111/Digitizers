@@ -18,7 +18,7 @@
     },
     "android": {
       "permissions": [],
-      "package": "com.matthewbarnabasc.digitizersapp"
+      "package": "com.org.digitizersapp"
     },
     "web": {},
     "extra": {
@@ -27,7 +27,15 @@
       }
     },
     "plugins": [
-      "expo-font"
+      "expo-font",
+      [
+        "expo-build-properties",
+        {
+          "ios": { "useFrameworks": "static" },
+          "android": { "compileSdkVersion": 34, "minSdkVersion": 23 }
+        }
+      ]
     ]
+    
   }
 }
