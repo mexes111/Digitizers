@@ -1,6 +1,20 @@
 rootProject.name = 'Digitizers'
 
+pluginManagement {
+  repositories {
+    gradlePluginPortal()
+    google()
+    mavenCentral()
+    maven { url = file('../node_modules/expo-modules-core/android') }
+  }
+}
 dependencyResolutionManagement {
+repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
+  repositories {
+    google()
+    mavenCentral()
+    maven { url = file('../node_modules/expo-modules-core/android') }
+  }
   versionCatalogs {
     reactAndroidLibs {
       from(files(new File(["node", "--print", "require.resolve('react-native/package.json')"].execute(null, rootDir).text.trim(), "../gradle/libs.versions.toml")))

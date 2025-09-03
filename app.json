@@ -18,7 +18,8 @@
     },
     "android": {
       "permissions": [],
-      "package": "com.org.digitizersapp"
+      "package": "com.org.digitizersapp",
+      "googleServicesFile": "./android/app/google-services.json"
     },
     "web": {},
     "extra": {
